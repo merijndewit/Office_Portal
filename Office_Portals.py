@@ -12,8 +12,9 @@ while True:
     event, values = window.read()
     print(event, values)
     if event == 'Start Streaming':
-        ststream.function( 1, 2)
+        ststream.stream()
     if event in (gui.WIN_CLOSED, 'Exit'):
+        ststream.stopstream()
         break
     
     
