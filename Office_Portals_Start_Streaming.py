@@ -2,7 +2,6 @@ import subprocess
 import os
 import signal
 
-
 stream = None
 def stream():
     global stream
@@ -13,6 +12,7 @@ def stream():
 
 def stopstream():
     global stream
-    os.killpg(os.getpgid(stream.pid), signal.SIGTERM)
-    stream = None
-    print("stream stopped")
+    if hasattr(stream, 'pid'):
+        os.killpg(os.getpgid(stream.pid), signal.SIGTERM)
+        stream = None
+    print(stream)
