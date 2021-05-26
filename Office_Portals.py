@@ -9,8 +9,9 @@ layout = [[gui.Text('Office Portals', font=("Helcentica", 20))],
             [gui.Text('Target IP:', font = ("Helcentica", 9)),gui.Input(key='targetip', size = (20,1))],
              [gui.Text('PI camera CSI/USB'), gui.Checkbox(key = ("picam"), text = 'unchecked = CSI') ],
               [gui.Text('Target PI camera CSI/USB'), gui.Checkbox(key = ("targetpicam"), text = 'unchecked = CSI')],
-               [gui.Button("Start Streaming"), gui.Button("Stop Streaming")],
-                [gui.Button("Start Recieving Stream"), gui.Button("Stop Revieving Stream")],
+               [gui.Text('Status:'), gui.Text('',key='Statustext')],
+                [gui.Button("Start Streaming"), gui.Button("Stop Streaming")],
+                 [gui.Button("Start Recieving Stream"), gui.Button("Stop Revieving Stream")],
          [gui.Exit()]]
 window = gui.Window('Office Portals', layout, size = (640,480),resizable = True , element_justification = "center", finalize = True)
 # window.Maximize()
@@ -22,6 +23,7 @@ while True:
         ststream.piCSI = values['picam']
         ststream.ip = values['targetip']
         ststream.stream()
+
     if event == 'Start Recieving Stream':
         targetpiCSI = values['targetpicam']
         rcstream.recieveStream(targetpiCSI)
