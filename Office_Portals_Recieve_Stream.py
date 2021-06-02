@@ -3,18 +3,18 @@ import signal
 import os
 
 _rcstream = None
-def recieveStream(targetpiCSI):
+def recieveStream():
     global _rcstream
-    if targetpiCSI == False:
-        _rcstream = subprocess.Popen(["gst-launch-1.0", "udpsrc", "port=5000", "!", "application/x-rtp,", "payload=96", "!", "rtpjitterbuffer", "!", "rtph264depay", "!", "avdec_h264", "!", "fpsdisplaysink", "sync=false", "text-overlay=false"], stdout=subprocess.PIPE, preexec_fn=os.setsid)
-        print("recieving stream for CSI camera")
-    elif targetpiCSI == True:
-        _rcstream = subprocess.Popen(["gst-launch-1.0", "udpsrc", "port=5000", "!", "application/x-rtp,", "payload=96", "!", "rtpjitterbuffer", "!", "rtph264depay", "!", "avdec_h264", "!", "fpsdisplaysink", "sync=false", "text-overlay=false"], stdout=subprocess.PIPE, preexec_fn=os.setsid)
-        print("recieving stream for USB camera")
-    else:
-        return(0)
+
+    _rcstream = subprocess.Popen(["omxplayer","--live","stream.spd"], stdout=subprocess.PIPE, preexec_fn=os.setsid)
+    print("recieving stream for CSI camera")
 
 def stopreceivingstream():
     global _rcstream
-    subprocess.Popen.kill(_rcstream)
+    if '_stream' in globals() and hasattr(_rcstream, 'pid'):
+        subprocess.Popen.kill(_rcstream)
+        _stream = None
+        print("stopped receiving stream")
+    else:
+        print("no stream to terminate")
     print(_rcstream)
