@@ -32,9 +32,8 @@ while True:
         ststream.vidfps = values['targetfps']
         ststream.stream()
     if event == 'Start Recieving Stream':
-        targetpiCSI = values['targetpicam']
-        rcstream.streamURL = values['targetip']
-        rcstream.recieveStream()
+        rcstream.ip = values['targetip']
+        rcstream.makespdfile()
     if event == 'Stop Streaming':
         ststream.stopstream()
     if event == 'Stop Revieving Stream':
