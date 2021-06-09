@@ -1,8 +1,9 @@
 import PySimpleGUI as gui
 import Layouts
 
+gui.theme('Default1')
 staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-')],
-          [gui.Button('prevPage'),gui.Button('nextPage'), gui.Button('Exit')]]
+          [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png'), gui.Button('Exit'),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png')]]
 
 window = gui.Window('Office Portals', staticLayout, size = (640,480),resizable = False , element_justification = "center")
 
