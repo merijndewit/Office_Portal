@@ -32,7 +32,24 @@ def checkRpicamsrc():
         #print("rpicamsrc is not installed")
         return(0)
  
+def checkGstreamerdev():
+    #check if rpicamsrc is installed
+    global _checkGstreamer
+    out = check_output(["dpkg -l | grep gstreamer"], shell = True)
+    encoding = 'utf-8'
+    encodedOutput = (str(out, encoding))
+    o = encodedOutput.find("libgstreamer-plugins-base1.0-dev") #here we look in the output for "Version" because it will only show when rpicamsrc is installed and that is what we want to know
+    if o != -1:
+        print("gstreamerdev is installed")
+        return(1)
+    else:
+        print("gstreamerdev is not installed")
+        return(0)
+
+
+
+
 
 
  
-checkRpicamsrc()
+checkGstreamerdev()
