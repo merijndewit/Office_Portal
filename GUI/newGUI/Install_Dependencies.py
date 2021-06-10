@@ -7,7 +7,7 @@ def installGstreamertools():
     
 def installRpicamsrc():
     global _stream
-    _stream = subprocess.Popen(["git clone https://github.com/thaytan/gst-rpicamsrc.git && cd gst-rpicamsrc/ && ./autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/ && make && sudo make install"], shell=True)
+    _stream = subprocess.Popen(["git clone https://github.com/thaytan/gst-rpicamsrc.git && ./gst-rpicamsrc/autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/ && gst-rpicamsrc/make && sudo gst-rpicamsrc/make install"], shell=True)
 
 def installGstreamerdev():
     global _stream

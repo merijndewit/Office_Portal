@@ -20,7 +20,7 @@ def checkGstreamer():
 def checkRpicamsrc():
     #check if rpicamsrc is installed
     try:
-        out = check_output(["gst-inspect-1.0", "rpicamsrc"])
+        out = check_output(["gst-inspect-1.0 rpicamsrc"], shell=True)
         if out == "No such element or plugin 'rpicamsrc'":
             return(0)
         else:
@@ -47,11 +47,3 @@ def checkGstreamerdev():
     else:
         print("gstreamerdev is not installed")
         return(0)
-
-
-
-
-
-
- 
-checkGstreamerdev()
