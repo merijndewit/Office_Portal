@@ -32,7 +32,7 @@ while True:
         window['Loading1'].update(visible=True)
         window['installGstreamer-tools'].update(visible=False)
         window.refresh()
-        if getdp.checkGstreamer() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        if getdp.checkGstreamer() == 1: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
             #gstreamer-tools not installed
             window['installGstreamer-tools'].update(visible=True)
         else:
@@ -44,7 +44,7 @@ while True:
         window['Loading3'].update(visible=True)
         window['installRpicamsrc'].update(visible=False)
         window.refresh()
-        if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        if getdp.checkRpicamsrc() == 1: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
             #gstreamer-tools not installed
             window['installRpicamsrc'].update(visible=True)
         else:
@@ -56,7 +56,7 @@ while True:
         window['Loading2'].update(visible=True)
         window['installGstreamerdev'].update(visible=False)
         window.refresh()
-        if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        if getdp.checkGstreamerdev() == 1: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
             #gstreamer-tools not installed
             window['installGstreamerdev'].update(visible=True)
         else:
@@ -65,11 +65,23 @@ while True:
         window['Loading2'].update(visible=False)
     
     if event == 'installGstreamer-tools':
+        window['installGstreamer-tools'].update(visible=False)
+        window['Loading1'].update(visible=True)
+        window.refresh()
         getD.installGstreamertools()
+        window['Loading1'].update(visible=False)
     elif event == 'installRpicamsrc':
+        window['installRpicamsrc'].update(visible=False)
+        window['Loading3'].update(visible=True)
+        window.refresh()
         getD.installRpicamsrc()
+        window['Loading3'].update(visible=False)
     elif event == 'installGstreamerdev':
+        window['installGstreamerdev'].update(visible=False)
+        window['Loading2'].update(visible=True)
+        window.refresh()
         getD.installGstreamerdev()
+        window['Loading2'].update(visible=False)
 
 
 window.close()
