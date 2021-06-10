@@ -1,6 +1,7 @@
 import PySimpleGUI as gui
 import Layouts
 import Get_Dependencies as getdp
+import Install_Dependencies as getD
 
 gui.theme('Default1')
 staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-')],
@@ -28,7 +29,7 @@ while True:
 
     #Dependencies
     if event == 'checkGstreamer':
-        if getdp.checkGstreamer() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        if getdp.checkGstreamer() == 1: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
             #gstreamer-tools not installed
             window['installGstreamer-tools'].update(visible=True)
         else:
@@ -36,7 +37,7 @@ while True:
             window['gstreamer-toolsInstalled'].update(visible=True)
 
     if event == 'checkRpicamsrc':
-        if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        if getdp.checkRpicamsrc() == 1: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
             #gstreamer-tools not installed
             window['installRpicamsrc'].update(visible=True)
         else:
@@ -44,12 +45,19 @@ while True:
             window['rpicamsrcInstalled'].update(visible=True)
 
     if event == 'checkGstreamerdev':
-        if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        if getdp.checkGstreamerdev() == 1: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
             #gstreamer-tools not installed
             window['installGstreamerdev'].update(visible=True)
         else:
             #gstreamer-tools is installed
             window['gstreamerdevInstalled'].update(visible=True)
+    
+    if event == 'installGstreamer-tools':
+        getD.installGstreamertools()
+    elif event == 'installRpicamsrc':
+        getD.installRpicamsrc()
+    elif event == 'installGstreamerdev':
+        getD.installGstreamerdev()
 
 
 window.close()

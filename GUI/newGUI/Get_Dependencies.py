@@ -5,7 +5,6 @@ import time
 
 def checkGstreamer():
     #check if gstreamer is installed
-    global _checkGstreamer
     #_checkGstreamer = subprocess.Popen(["sudo apt show gstreamer1.0-tools"], shell=True, preexec_fn=os.setsid, stdout=subprocess.PIPE)
     out = check_output(["sudo", "apt", "show", "gstreamer1.0-tools"])
     encoding = 'utf-8'
@@ -20,7 +19,6 @@ def checkGstreamer():
 
 def checkRpicamsrc():
     #check if rpicamsrc is installed
-    global _checkGstreamer
     out = check_output(["gst-inspect-1.0", "rpicamsrc"])
     encoding = 'utf-8'
     encodedOutput = (str(out, encoding))
@@ -34,7 +32,6 @@ def checkRpicamsrc():
  
 def checkGstreamerdev():
     #check if rpicamsrc is installed
-    global _checkGstreamer
     out = check_output(["dpkg -l | grep gstreamer"], shell = True)
     encoding = 'utf-8'
     encodedOutput = (str(out, encoding))
