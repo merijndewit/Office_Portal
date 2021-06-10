@@ -19,22 +19,24 @@ def checkGstreamer():
 
 def checkRpicamsrc():
     #check if rpicamsrc is installed
-    out = check_output(["gst-inspect-1.0", "rpicamsrc"])
-    if out == "No such element or plugin 'rpicamsrc'":
+    try:
+        out = check_output(["gst-inspect-1.0", "rpicamsrc"])
+        if out == "No such element or plugin 'rpicamsrc'":
+            return(0)
+        else:
+            encoding = 'utf-8'
+            encodedOutput = (str(out, encoding))
+            o = encodedOutput.find("Version") #here we look in the output for "Version" because it will only show when rpicamsrc is installed and that is what we want to know
+        if o != -1:
+            #print("rpicamsrc is installed")
+            return(1)
+        else:
+            #print("rpicamsrc is not installed")
+            return(0)
+    except:
         return(0)
-    else:
-        encoding = 'utf-8'
-        encodedOutput = (str(out, encoding))
-        o = encodedOutput.find("Version") #here we look in the output for "Version" because it will only show when rpicamsrc is installed and that is what we want to know
-    if o != -1:
-        #print("rpicamsrc is installed")
-        return(1)
-    else:
-        #print("rpicamsrc is not installed")
-        return(0)
- 
 def checkGstreamerdev():
-    #check if rpicamsrc is installed
+    #check if gstreamerdev is installed
     out = check_output(["dpkg -l | grep gstreamer"], shell = True)
     encoding = 'utf-8'
     encodedOutput = (str(out, encoding))
