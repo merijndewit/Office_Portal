@@ -85,7 +85,9 @@ while True:
         getD.installGstreamerdev()
         window['Loading2'].update(visible=False)
     #######################################################################################
-    #Options
+    #Options / advanced options
     #######################################################################################
+    
+
 
 window.close()
