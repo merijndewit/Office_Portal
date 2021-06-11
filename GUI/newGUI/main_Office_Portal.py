@@ -2,6 +2,7 @@ import PySimpleGUI as gui
 import Layouts
 import Get_Dependencies as getdp
 import Install_Dependencies as getD
+import Make_Config_File as config
 
 gui.theme('Default1')
 staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-')],
@@ -87,7 +88,17 @@ while True:
     #######################################################################################
     #Options / advanced options
     #######################################################################################
-    
+    if event == 'saveSettings':
+        config.targetipWidth = values['targetipWidth']
+        config.targetipHeight = values['targetipHeight']
+        config.ledStrip = values['ledStrip']
+        config.ledTexture = values['ledTexture']
+        config.noRing = values['noRing']
+        config.autoStart = values['autoStart']
+        config.streamBitrate = values['streamBitrate']
+        config.portSender = values['portSender']
+        config.portReceiver = values['portReceiver']
+        config.makeConfig()
 
 
 window.close()
