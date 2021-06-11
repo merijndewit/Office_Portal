@@ -24,9 +24,20 @@ Options = [
         [gui.Text('Options:', font=("Helcentica", 20))],
         [gui.Text('Here we have a few options we have to fill in correctly', font=('Helcentica',12))],
         [gui.Text('Portal resolution:')],
-        [gui.Text('Sending video spesifications:', font=('Helcentica',12))],
+        [gui.Text('Sending stream spesifications:', font=('Helcentica',12))],
         [gui.Text('Resolution of the other portal:'), gui.Input('1920', key='targetipWidth', size=(4,1)), gui.Text('x'), gui.Input('1080',key='targetipHeight', size=(4,1))],
         [gui.Text('Framerate:'), gui.Input('20', key=('targetFramerate'), size=(2,1))],
         [gui.Text('Portal ring potion:', font=('Helcentica',12))],
-        [gui.Text('Ledstrip:'), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Text('Texture:'), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Text('None:'), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)]]
+        [gui.Text('Ledstrip:'), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Text('Texture:'), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Text('None:'), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
+        [gui.Text('General options:', font=('Helcentica',12))],
+        [gui.Text('Startup program on boot:'), gui.Checkbox(key=('autoStart'), text=None)],
+        [gui.Text('Save all settings:'), gui.Button(key=('saveSettings'), button_text=('save'))]]
 
+advancedOptions = [
+        [gui.Text('Advanced options', font=("Helcentica", 20))],
+        [gui.Text('Here we have a few advanced options.', font=('Helcentica',12))],
+        [gui.Text('You can just leave them as default.', font=('Helcentica',12))],
+        [gui.Text('Its reccomended to only change them if you have a problem')], 
+        [gui.Text('Bitrate stream:'), gui.Input('4000000', key=('streamBitrate'), size=(8,1))],
+        [gui.Text('Port sender:')],
+        [gui.Text('Port receiver:')]] 
