@@ -102,6 +102,7 @@ while True:
             config.makeConfig(varmakeconfig)
 
     if event == 'readyStream':
+        RStream.stream()
         RStream.makespdfile()
         
 
