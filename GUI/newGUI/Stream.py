@@ -15,7 +15,7 @@ def makespdfile():
     config = open('office_portal.txt')
     configLines = config.readlines()
     f = open('stream.spd', "w+")
-    f.writelines(["v=0\n","m=video 5000 RTP/AVP 96\n","c=IN IP4 " + configLines[0] + "\n","a=rtpmap:96 H264/90000"])
+    f.writelines(["v=0\n","m=video 5000 RTP/AVP 96\n","c=IN IP4 " + configLines[0],"a=rtpmap:96 H264/90000"])
     f.close()
     config.close()
     print("file created")
