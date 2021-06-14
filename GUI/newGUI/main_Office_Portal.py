@@ -89,16 +89,13 @@ while True:
     #Options / advanced options
     #######################################################################################
     if event == 'saveSettings':
-        config.targetipWidth = values['targetipWidth']
-        config.targetipHeight = values['targetipHeight']
-        config.ledStrip = values['ledStrip']
-        config.ledTexture = values['ledTexture']
-        config.noRing = values['noRing']
-        config.autoStart = values['autoStart']
-        config.streamBitrate = values['streamBitrate']
-        config.portSender = values['portSender']
-        config.portReceiver = values['portReceiver']
-        config.makeConfig()
+        configspecs = ['targetipWidth', 'targetipHeight', 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver']
+        config.clearConfigfile()
+        for i in range(len(configspecs)):
+            varmakeconfig = dict(zip('config.', configspecs[i]))
+            varmakeconfig = values[configspecs[i]]
+            config.makeConfig(varmakeconfig)
+        
 
 
 window.close()

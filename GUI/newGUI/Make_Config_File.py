@@ -1,5 +1,8 @@
-def makeConfig():
-    f = open('office_portal.txt', "w+")
-    f.writelines([targetipWidth + '\n', targetipHeight + '\n', str(ledStrip) + '\n', str(ledTexture) + '\n', str(noRing) + '\n', str(autoStart) + '\n', streamBitrate + '\n', portSender + '\n', portReceiver,])
+def clearConfigfile():
+    f = open('office_portal.txt', "r+")
+    f.truncate(0)
     f.close()
-    print('file made')
+def makeConfig(newLine):
+    f = open('office_portal.txt', "a")
+    f.writelines([str(newLine) + '\n'])
+    f.close()
