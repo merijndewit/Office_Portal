@@ -1,5 +1,6 @@
 from typing import Text
 import PySimpleGUI as gui
+import getIP as getip
 
 gui.theme('Default1')
 Introduction = [
@@ -44,6 +45,6 @@ advancedOptions = [
 connectPI = [
         [gui.Text('Connect to the other PI', font=("Helcentica", 20))],
         [gui.Text('Its time to connect to the other portal!', font=("Helcentica", 12))],
-        [gui.Text('This PIs IP:'), gui.Text('A')],
+        [gui.Text('This PIs IP:'), gui.Text(getip.getip())],
         [gui.Text('Enter here the ip from the other pi:'), gui.Input('192.168.x.xxx', key=('otherIP'), size=(15,1))],
-        [gui.Text('(Only continue when youve entered the correct ip of the other pi)')]]   
+        [gui.Text('(Only continue when youve entered the correct ip of the other pi)')]]
