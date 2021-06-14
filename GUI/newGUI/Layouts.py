@@ -40,3 +40,10 @@ advancedOptions = [
         [gui.Text('Port sender:'), gui.Input('5000', key=('portSender'), size=(8,1))],
         [gui.Text('Port receiver:'), gui.Input('5000', key=('portReceiver'), size=(8,1))],
         [gui.Text('Save all settings:'), gui.Button(key=('saveSettings'), button_text=('save'))]]
+
+connectPI = [
+        [gui.Text('Connect to the other PI', font=("Helcentica", 20))],
+        [gui.Text('Its time to connect to the other portal!', font=("Helcentica", 12))],
+        [gui.Text('This PIs IP:'), gui.Text('A')],
+        [gui.Text('Enter here the ip from the other pi:'), gui.Input('192.168.x.xxx', key=('otherIP'), size=(15,1))],
+        [gui.Text('(Only continue when youve entered the correct ip of the other pi)')]]   

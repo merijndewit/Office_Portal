@@ -5,7 +5,7 @@ import Install_Dependencies as getD
 import Make_Config_File as config
 
 gui.theme('Default1')
-staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-')],
+staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-'), gui.Column(Layouts.connectPI, visible=False, key='-PG4-')],
           [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0)]]
 
 window = gui.Window('Office Portals', staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -22,7 +22,7 @@ while True:
         break
     if event == 'nextPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
-        staticLayout = staticLayout + 1 if staticLayout < 3 else 3
+        staticLayout = staticLayout + 1 if staticLayout < 4 else 4
         window[f'-PG{staticLayout}-'].update(visible=True)
     elif event == 'prevPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
@@ -31,6 +31,7 @@ while True:
     #######################################################################################
     #Dependencies
     #######################################################################################
+    
     if event == 'checkGstreamer':
         window['Loading1'].update(visible=True)
         window['installGstreamer-tools'].update(visible=False)
@@ -95,6 +96,10 @@ while True:
             varmakeconfig = dict(zip('config.', configspecs[i]))
             varmakeconfig = values[configspecs[i]]
             config.makeConfig(varmakeconfig)
+    #######################################################################################
+    #connect to other pi
+    #######################################################################################
+
         
 
 
