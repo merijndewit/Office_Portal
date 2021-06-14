@@ -3,9 +3,10 @@ import Layouts
 import Get_Dependencies as getdp
 import Install_Dependencies as getD
 import Make_Config_File as config
+import Stream as RStream
 
 gui.theme('Default1')
-staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-'), gui.Column(Layouts.connectPI, visible=False, key='-PG4-')],
+staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-'), gui.Column(Layouts.connectPI, visible=False, key='-PG4-'),  gui.Column(Layouts.receiveStream, visible=False, key='-PG5-')],
           [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0)]]
 
 window = gui.Window('Office Portals', staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -19,10 +20,12 @@ while True:
     print(event, values)
     #staticLayout
     if event in (None, 'Exit'):
+        RStream.stopreceivingstream()
+        RStream.stopstream()
         break
     if event == 'nextPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
-        staticLayout = staticLayout + 1 if staticLayout < 4 else 4
+        staticLayout = staticLayout + 1 if staticLayout < 5 else 5
         window[f'-PG{staticLayout}-'].update(visible=True)
     elif event == 'prevPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
@@ -86,19 +89,23 @@ while True:
         window.refresh()
         getD.installGstreamerdev()
         window['Loading2'].update(visible=False)
+       
     #######################################################################################
-    #Options / advanced options
+    #receive stream
     #######################################################################################
-    if event == 'saveSettings':
-        configspecs = ['targetipWidth', 'targetipHeight', 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver']
+    if event == 'nextPage' and staticLayout == 5:
+        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver']
         config.clearConfigfile()
         for i in range(len(configspecs)):
             varmakeconfig = dict(zip('config.', configspecs[i]))
             varmakeconfig = values[configspecs[i]]
             config.makeConfig(varmakeconfig)
-    #######################################################################################
-    #connect to other pi
-    #######################################################################################
+
+    if event == 'readyStream':
+        RStream.makespdfile()
+        
+
+    
 
         
 

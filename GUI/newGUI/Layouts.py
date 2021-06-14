@@ -39,8 +39,7 @@ advancedOptions = [
         [gui.Text('Its reccomended to only change them if you have a problem')], 
         [gui.Text('Bitrate stream:'), gui.Input('4000000', key=('streamBitrate'), size=(8,1))],
         [gui.Text('Port sender:'), gui.Input('5000', key=('portSender'), size=(8,1))],
-        [gui.Text('Port receiver:'), gui.Input('5000', key=('portReceiver'), size=(8,1))],
-        [gui.Text('Save all settings:'), gui.Button(key=('saveSettings'), button_text=('save'))]]
+        [gui.Text('Port receiver:'), gui.Input('5000', key=('portReceiver'), size=(8,1))]]
 
 connectPI = [
         [gui.Text('Connect to the other PI', font=("Helcentica", 20))],
@@ -48,3 +47,8 @@ connectPI = [
         [gui.Text('This PIs IP:'), gui.Text(getip.getip())],
         [gui.Text('Enter here the ip from the other pi:'), gui.Input('192.168.x.xxx', key=('otherIP'), size=(15,1))],
         [gui.Text('(Only continue when youve entered the correct ip of the other pi)')]]
+
+receiveStream = [
+        [gui.Text('Stream and Receive', font=("Helcentica", 20))],
+        [gui.Text('Click on the ready button if you are on this screen on both PIs', font=("Helcentica", 12))],
+        [gui.Button('Ready', key=('readyStream'))]]    
