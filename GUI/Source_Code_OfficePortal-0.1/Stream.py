@@ -53,6 +53,6 @@ def stopreceivingstream():
 def checkstream():
     time.sleep(2)
     if _stream.poll() == None:
-        print('yeyy')
+        return(0)
     else:
-        print('wehh')
+        return(1)

@@ -101,8 +101,12 @@ while True:
             varmakeconfig = values[configspecs[i]]
             config.makeConfig(varmakeconfig)
         RStream.stream()
-        RStream.checkstream()
-        
+        if RStream.checkstream() == 0:
+            window['streaming'].update(visible=True)
+            window['notStreaming'].update(visible=False)
+        else:
+            window['notStreaming'].update(visible=True)
+            window['streaming'].update(visible=False)
     if event == 'readyStream':
         RStream.makespdfile()
         
