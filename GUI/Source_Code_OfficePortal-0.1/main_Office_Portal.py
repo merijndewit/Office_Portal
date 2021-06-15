@@ -100,8 +100,8 @@ while True:
             varmakeconfig = dict(zip('config.', configspecs[i]))
             varmakeconfig = values[configspecs[i]]
             config.makeConfig(varmakeconfig)
-    if event == 'nextPage' and staticLayout == 6:
         RStream.stream()
+        
     if event == 'readyStream':
         RStream.makespdfile()
         
