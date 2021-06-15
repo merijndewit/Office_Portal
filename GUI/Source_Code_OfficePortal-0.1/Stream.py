@@ -41,14 +41,14 @@ def stopstream():
 
 def stopreceivingstream():
     global _rcstream
-    if '_rcstream' in globals() and hasattr(_rcstream, 'pid'):
-        #subprocess.Popen.kill(_rcstream)
-        os.killpg(os.getpgid(_rcstream.pid), signal.SIGTERM)
-        _rcstream = None
-        print("stopped receiving stream")
-    else:
+    try:
+        if '_rcstream' in globals() and hasattr(_rcstream, 'pid'):
+            #subprocess.Popen.kill(_rcstream)
+            os.killpg(os.getpgid(_rcstream.pid), signal.SIGTERM)
+            _rcstream = None
+            print("stopped receiving stream")
+    except:
         print("no stream to terminate")
-    print(_rcstream)
 
 def checkstream():
     time.sleep(2)

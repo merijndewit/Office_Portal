@@ -53,4 +53,4 @@ receiveStream = [
         [gui.Text('Click on the ready button if you are on this screen on both PIs', font=("Helcentica", 12))],
         [gui.Image(filename='Pictures/officeportalconnect.png')],
         [gui.Button('Ready', key=('readyStream'))],
-        [gui.Text('Output:', font=("Helcentica", 12)), gui.Image(visible = False, key='notStreaming', filename='Pictures/Red_Cross.png'), gui.Image(visible = False, key='streaming',filename='Pictures/Green_Check.png')]]
+        [gui.Text('Streaming status:', font=("Helcentica", 12)), gui.Image(visible = False, key='notStreaming', filename='Pictures/Red_Cross.png'), gui.Image(visible = False, key='streaming',filename='Pictures/Green_Check.png')]]

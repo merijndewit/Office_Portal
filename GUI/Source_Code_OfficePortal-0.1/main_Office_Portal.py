@@ -106,9 +106,13 @@ while True:
             window['notStreaming'].update(visible=False)
         else:
             window['notStreaming'].update(visible=True)
-            window['streaming'].update(visible=False)
+            window['streaming'].update(visible=False
+            )
     if event == 'readyStream':
         RStream.makespdfile()
+    if event == 'prevPage' and staticLayout == 4:
+        RStream.stopreceivingstream()
+        RStream.stopstream()
         
         
 
