@@ -4,8 +4,8 @@
 block_cipher = None
 
 
-a = Analysis(['Office_Portals.py'],
-             pathex=['/lib/python3', '/home/pi/Office_Portal/GUI'],
+a = Analysis(['main_Office_Portal.py'],
+             pathex=['/lib/python3/dist-packages', '/home/pi/Office_Portal/GUI/Source_Code'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -24,7 +24,7 @@ exe = EXE(pyz,
           a.scripts, 
           [],
           exclude_binaries=True,
-          name='Office_Portals',
+          name='main_Office_Portal',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -40,4 +40,4 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='Office_Portals')
+               name='main_Office_Portal')
