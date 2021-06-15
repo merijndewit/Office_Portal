@@ -3,7 +3,7 @@ import os
 
 def installGstreamertools():
     global _install
-    _install = subprocess.Popen(["sudo apt-get install gstreamer1.0-tools"], shell=True)
+    _install = subprocess.Popen(["sudo apt-get install -y gstreamer1.0-tools"], shell=True)
     _install.wait()
 
 def installRpicamsrc():
@@ -12,5 +12,5 @@ def installRpicamsrc():
     _install.wait()
 def installGstreamerdev():
     global _install
-    _install = subprocess.Popen(["sudo apt-get install autoconf automake libtool pkg-config libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libraspberrypi-dev"], shell=True)
+    _install = subprocess.Popen(["sudo apt-get install -y autoconf automake libtool pkg-config libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libraspberrypi-dev"], shell=True)
     _install.wait()
