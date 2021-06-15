@@ -28,7 +28,7 @@ Options = [
         [gui.Text('Sending stream spesifications:', font=('Helcentica',12))],
         [gui.Text('Resolution of the other portal:'), gui.Input('1920', key='targetipWidth', size=(4,1)), gui.Text('x'), gui.Input('1080',key='targetipHeight', size=(4,1))],
         [gui.Text('Framerate:'), gui.Input('20', key=('targetFramerate'), size=(2,1))],
-        [gui.Text('Portal ring potion:', font=('Helcentica',12))],
+        [gui.Text('Portal ring potion (not ready):', font=('Helcentica',12))],
         [gui.Text('Ledstrip:'), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Text('Texture:'), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Text('None:'), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
         [gui.Text('Startup program on boot:'), gui.Checkbox(key=('autoStart'), text=None)]]
 
@@ -51,4 +51,5 @@ connectPI = [
 receiveStream = [
         [gui.Text('Stream and Receive', font=("Helcentica", 20))],
         [gui.Text('Click on the ready button if you are on this screen on both PIs', font=("Helcentica", 12))],
+        [gui.Image(filename='Pictures/officeportalconnect.png')],
         [gui.Button('Ready', key=('readyStream'))]]    
