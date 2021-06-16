@@ -6,6 +6,8 @@ import Theme
 Theme.setTheme()
 
 textBackground = gui.theme_background_color()
+
+
 Introduction = [
         [gui.Text('Office Portals', font=("Helcentica", 20), background_color=textBackground)],
         [gui.Text('A nerdy solution to make distant colleagues feel nearby', font=("Helcentica", 12), background_color=textBackground)],
@@ -57,3 +59,8 @@ receiveStream = [
         [gui.Image(filename='Pictures/officeportalconnect.png')],
         [gui.Button('Ready', key=('readyStream'))],
         [gui.Text('Streaming status:', font=("Helcentica", 12), background_color=textBackground), gui.Image(visible = False, key='notStreaming', filename='Pictures/Red_Cross.png'), gui.Image(visible = False, key='streaming',filename='Pictures/Green_Check.png')]]
+
+
+staticLayout = [
+        [gui.Column(Introduction, key='-PG0-'), gui.Column(Dependencies, visible=False, key='-PG1-'), gui.Column(Options, visible=False, key='-PG2-'), gui.Column(advancedOptions, visible=False, key='-PG3-'), gui.Column(connectPI, visible=False, key='-PG4-'),  gui.Column(receiveStream, visible=False, key='-PG5-')],
+        [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0)]]

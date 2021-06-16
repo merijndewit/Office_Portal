@@ -4,14 +4,9 @@ import Get_Dependencies as getdp
 import Install_Dependencies as getD
 import Make_Config_File as config
 import Stream as RStream
-import Theme
 
-Theme.setTheme()
 
-staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-'), gui.Column(Layouts.connectPI, visible=False, key='-PG4-'),  gui.Column(Layouts.receiveStream, visible=False, key='-PG5-')],
-          [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0)]]
-
-window = gui.Window('Office Portals', staticLayout, size = (640,480),resizable = False , element_justification="center")
+window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
 
 staticLayout = 0
 while True:
