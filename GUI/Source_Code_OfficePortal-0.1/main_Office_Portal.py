@@ -6,6 +6,12 @@ import Make_Config_File as config
 import Stream as RStream
 
 gui.theme('Default1')
+gui.theme_background_color(('#ebfdff'))
+gui.theme_element_background_color(('#ebfdff'))
+gui.theme_input_background_color(('white'))
+gui.theme_element_text_color(('#ebfdff'))
+gui.theme_button_color(('#ebfdff'))
+
 staticLayout = [[gui.Column(Layouts.Introduction, key='-PG0-'), gui.Column(Layouts.Dependencies, visible=False, key='-PG1-'), gui.Column(Layouts.Options, visible=False, key='-PG2-'), gui.Column(Layouts.advancedOptions, visible=False, key='-PG3-'), gui.Column(Layouts.connectPI, visible=False, key='-PG4-'),  gui.Column(Layouts.receiveStream, visible=False, key='-PG5-')],
           [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0)]]
 
