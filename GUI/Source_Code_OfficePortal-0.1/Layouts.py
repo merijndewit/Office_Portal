@@ -12,7 +12,7 @@ Introduction = [
         [gui.Text('A nerdy solution to make distant colleagues feel nearby', font=("Helcentica", 12), background_color=textBackground)],
         [gui.Text('Welcome to Office Portal!', background_color=textBackground)],
         [gui.Text('Before we can start we need to do the setup first', background_color=textBackground)],
-        [gui.Text('Click on the button next page to start the setup.', background_color=textBackground)]]  
+        [gui.Text('Click on the button next page to start the setup.', background_color=textBackground)]]
 
 Dependencies = [
         [gui.Text('To use Office Portal you need to have installed a few dependencies.', background_color=textBackground)],
@@ -46,7 +46,8 @@ connectPI = [
         [gui.Text('Its time to connect to the other portal!', font=("Helcentica", 12), background_color=textBackground)],
         [gui.Text('This PIs IP:', background_color=textBackground), gui.Text(getip.getip())],
         [gui.Text('Enter here the ip from the other pi:', background_color=textBackground), gui.Input('192.168.x.xxx', key=('otherIP'), size=(15,1))],
-        [gui.Text('(Only continue when youve entered the correct ip of the other pi)', background_color=textBackground)]]
+        [gui.Text('(Only continue when youve entered the correct ip of the other pi)', background_color=textBackground)],
+        [gui.Image(filename=('Pictures/Connect_Image.png'))]]
 
 receiveStream = [
         [gui.Text('Click on the ready button if you are on this screen on both PIs', font=("Helcentica", 12), background_color=textBackground)],
