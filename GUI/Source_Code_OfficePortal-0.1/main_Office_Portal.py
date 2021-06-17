@@ -14,7 +14,6 @@ while True:
     #Main
     #######################################################################################
     event, values = window.read()
-    print(event, values)
     #staticLayout   
     if event in (None, 'Exit'):
         RStream.stopreceivingstream()
