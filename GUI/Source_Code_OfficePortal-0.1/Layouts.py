@@ -54,8 +54,12 @@ receiveStream = [
         [gui.Button('Ready', key=('readyStream'), mouseover_colors=Theme.mouseOver)],
         [gui.Text('Streaming status:', font=("Helcentica", 12), background_color=textBackground), gui.Image(visible = False, key='notStreaming', filename='Pictures/Red_Cross.png'), gui.Image(visible = False, key='streaming',filename='Pictures/Green_Check.png')]]
 
+navigationButtons = [
+        [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0, mouseover_colors=Theme.mouseOver, visible=True), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0, mouseover_colors=Theme.mouseOver),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0, mouseover_colors=Theme.mouseOver)]]
+
+
 
 staticLayout = [
         [gui.Text('Office Portal',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T0-'), gui.Text('Dependencies',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T1-', visible=False), gui.Text('Options',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T2-', visible=False), gui.Text('Advanced Options',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T3-', visible=False), gui.Text('Connect',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T4-', visible=False), gui.Text('Stream and Receive',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T5-', visible=False)],
         [gui.Column(Introduction, key='-PG0-'), gui.Column(Dependencies, visible=False, key='-PG1-'), gui.Column(Options, visible=False, key='-PG2-'), gui.Column(advancedOptions, visible=False, key='-PG3-'), gui.Column(connectPI, visible=False, key='-PG4-'),  gui.Column(receiveStream, visible=False, key='-PG5-')],
-        [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0, mouseover_colors=Theme.mouseOver),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0, mouseover_colors=Theme.mouseOver)]]
+        [gui.Column(navigationButtons)]]
