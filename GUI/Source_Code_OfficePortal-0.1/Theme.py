@@ -1,5 +1,6 @@
 import PySimpleGUI as gui
 mouseOver = '#dcf9fc'
+borderColor = '#e0ebff'
 def setTheme():
     return(
         gui.theme('Default1'),

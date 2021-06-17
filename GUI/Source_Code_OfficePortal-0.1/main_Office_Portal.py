@@ -22,12 +22,18 @@ while True:
         break
     if event == 'nextPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
+        window[f'-T{staticLayout}-'].update(visible=False)
         staticLayout = staticLayout + 1 if staticLayout < 5 else 5
         window[f'-PG{staticLayout}-'].update(visible=True)
+       
+        window[f'-T{staticLayout}-'].update(visible=True)
     elif event == 'prevPage':
+        window[f'-T{staticLayout}-'].update(visible=False)
         window[f'-PG{staticLayout}-'].update(visible=False)
         staticLayout = staticLayout - 1 if staticLayout > 0 else 0
         window[f'-PG{staticLayout}-'].update(visible=True)
+        
+        window[f'-T{staticLayout}-'].update(visible=True)
     #######################################################################################
     #Dependencies
     #######################################################################################
