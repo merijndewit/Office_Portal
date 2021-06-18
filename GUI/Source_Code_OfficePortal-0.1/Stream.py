@@ -56,3 +56,10 @@ def checkstream():
         return(0)
     else:
         return(1)
+
+def checkReceivestream():
+    time.sleep(6)
+    if _rcstream.poll() == None:
+        return(0)
+    else:
+        return(1)

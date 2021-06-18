@@ -4,6 +4,7 @@ import Get_Dependencies as getdp
 import Install_Dependencies as getD
 import Make_Config_File as config
 import Stream as RStream
+import Ring
 
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -125,10 +126,16 @@ while True:
             window['notStreaming'].update(visible=False)
         else:
             window['notStreaming'].update(visible=True)
-            window['streaming'].update(visible=False
-            )
+            window['streaming'].update(visible=False)
+            
     if event == 'readyStream':
         RStream.makespdfile()
+        myconfig = open('office_portal.txt')
+        configLines = myconfig.readlines()
+        if RStream.checkReceivestream() == 0 and configLines[5]:
+            Ring.makeTexture()
+        myconfig.close()
+            
     if event == 'prevPage' and staticLayout == 4:
         RStream.stopreceivingstream()
         RStream.stopstream()
