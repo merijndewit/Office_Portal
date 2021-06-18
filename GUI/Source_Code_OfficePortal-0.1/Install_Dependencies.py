@@ -14,3 +14,8 @@ def installGstreamerdev():
     global _install
     _install = subprocess.Popen(["sudo apt-get install -y autoconf automake libtool pkg-config libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libraspberrypi-dev"], shell=True)
     _install.wait()
+
+def installRaspidmx():
+    global _install
+    _install = subprocess.Popen(["git clone https://github.com/AndrewFromMelbourne/raspidmx && cd raspidmx && sudo make"], shell=True, cwd='/home/pi')
+    _install.wait()

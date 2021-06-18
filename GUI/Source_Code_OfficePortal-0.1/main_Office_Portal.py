@@ -71,7 +71,19 @@ while True:
             #gstreamer-tools is installed
             window['gstreamerdevInstalled'].update(visible=True)
         window['Loading2'].update(visible=False)
-    
+
+    if event == 'checkRaspidmx':
+        window['Loading4'].update(visible=True)
+        window['installRaspidmx'].update(visible=False)
+        window.refresh()
+        if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+            #gstreamer-tools not installed
+            window['installRaspidmx'].update(visible=True)
+        else:
+            #gstreamer-tools is installed
+            window['RaspidmxInstalled'].update(visible=True)
+        window['Loading4'].update(visible=False)
+
     if event == 'installGstreamer-tools':
         window['installGstreamer-tools'].update(visible=False)
         window['Loading1'].update(visible=True)
@@ -90,17 +102,11 @@ while True:
         window.refresh()
         getD.installGstreamerdev()
         window['Loading2'].update(visible=False)
-
-    if event == 'checkRaspidmx':
-        window['Loading4'].update(visible=True)
+    elif event == 'installRaspidmx':
         window['installRaspidmx'].update(visible=False)
+        window['Loading4'].update(visible=True)
         window.refresh()
-        if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installRaspidmx'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['RaspidmxInstalled'].update(visible=True)
+        getD.installRaspidmx()
         window['Loading4'].update(visible=False)
        
     #######################################################################################
