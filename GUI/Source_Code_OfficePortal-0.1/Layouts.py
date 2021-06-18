@@ -31,7 +31,8 @@ Options = [
         [gui.Text('Sending stream spesifications:', font=('Helcentica',12), background_color=textBackground)],
         [gui.Text('Resolution of the other portal:', background_color=textBackground), gui.Input('1920', key='targetipWidth', size=(4,1)), gui.Text('x', background_color=textBackground), gui.Input('1080',key='targetipHeight', size=(4,1))],
         [gui.Text('Framerate:', background_color=textBackground), gui.Input('20', key=('targetFramerate'), size=(2,1))],
-        [gui.Text('Portal ring potion (not ready):', background_color=textBackground, font=('Helcentica',12))],
+        [gui.Text('Portal ring potion:', background_color=textBackground, font=('Helcentica',12))],
+        [gui.Text('Color: Blue:', background_color=textBackground), gui.Radio(text=None, group_id=('colorLed'), key=('blueLed'), default=True), gui.Text('Orange:', background_color=textBackground), gui.Radio(text=None, group_id=('colorLed'), key=('orangeLed'))],
         [gui.Text('Ledstrip:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Text('Texture:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Text('None:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
         [gui.Text('Startup program on boot:', background_color=textBackground), gui.Checkbox(key=('autoStart'), text=None)]]
 

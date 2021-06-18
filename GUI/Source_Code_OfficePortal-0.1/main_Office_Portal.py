@@ -113,7 +113,7 @@ while True:
     #receive stream
     #######################################################################################
     if event == 'nextPage' and staticLayout == 5:
-        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver']
+        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed']
         config.clearConfigfile()
         for i in range(len(configspecs)):
             varmakeconfig = dict(zip('config.', configspecs[i]))
