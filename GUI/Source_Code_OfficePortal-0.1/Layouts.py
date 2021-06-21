@@ -34,6 +34,7 @@ Options = [
         [gui.Text('Portal ring potion:', background_color=textBackground, font=('Helcentica',12))],
         [gui.Text('Color: Blue:', background_color=textBackground), gui.Radio(text=None, group_id=('colorLed'), key=('blueLed'), default=True), gui.Text('Orange:', background_color=textBackground), gui.Radio(text=None, group_id=('colorLed'), key=('orangeLed'))],
         [gui.Text('Ledstrip:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Text('Texture:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Text('None:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
+        [gui.Text('Resolution: 1080p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring1080'), default=True), gui.Text('720p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring720'))],
         [gui.Text('Startup program on boot:', background_color=textBackground), gui.Checkbox(key=('autoStart'), text=None)]]
 
 advancedOptions = [

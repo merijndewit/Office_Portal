@@ -115,7 +115,7 @@ while True:
     #receive stream
     #######################################################################################
     if event == 'nextPage' and staticLayout == 5:
-        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed']
+        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed', 'ring1080', 'ring720']
         config.clearConfigfile()
         for i in range(len(configspecs)):
             varmakeconfig = dict(zip('config.', configspecs[i]))
@@ -131,11 +131,11 @@ while True:
             
     if event == 'readyStream':
         RStream.makespdfile()
-        myconfig = open('office_portal.txt')
-        configLines = myconfig.readlines()
-        if RStream.checkReceivestream() == 0 and configLines[5]:
+        with open('office_portal.txt') as f:
+            configLines = [ line.strip() for line in f ]
+        if RStream.checkReceivestream() == 0 and configLines[5] == 'True':
             Ring.makeTexture()
-        myconfig.close()
+        
             
     if event == 'prevPage' and staticLayout == 4:
         RStream.stopreceivingstream()
