@@ -4,7 +4,8 @@ import signal
 
 def makeTexture():
     global _ringTexture
-    _ringTexture = subprocess.Popen(["./raspidmx/pngview/pngview -b 0 -l 3 Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/test.png"], shell=True, cwd='/home/pi/', preexec_fn=os.setsid)
+    pathToPicture = 'Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/'
+    _ringTexture = subprocess.Popen(["./raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture + "test.png"], cwd='/home/pi/', preexec_fn=os.setsid)
     
 
 def stopRing():
