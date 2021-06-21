@@ -19,7 +19,6 @@ def makeTexture():
         else:
             picture = '720porange.png'
     _ringTexture = subprocess.Popen(["./raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture + picture], cwd='/home/pi/', preexec_fn=os.setsid)
-    print(picture)
 
 def stopRing():
     global _ringTexture
