@@ -134,10 +134,12 @@ while True:
         RStream.makespdfile()
         with open('office_portal.txt') as f:
             configLines = [ line.strip() for line in f ]
-        if RStream.checkReceivestream() == 0 and configLines[5] == 'True':
+        canStream = RStream.checkReceivestream() 
+        if canStream == 0 and configLines[5] == 'True':
             Ring.makeTexture()
-        elif RStream.checkReceivestream() == 0 and configLines[4] == 'True':
-            LED.portalLed()
+        elif canStream == 0 and configLines[4] == 'True':
+            print('startled')
+            LED.setcolor()
         
             
     if event == 'prevPage' and staticLayout == 4:
