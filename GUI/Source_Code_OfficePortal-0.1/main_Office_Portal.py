@@ -142,11 +142,4 @@ while True:
         RStream.stopstream()
         Ring.stopRing()
         
-        
-
-    
-
-        
-
-
 window.close()
