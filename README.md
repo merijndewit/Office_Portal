@@ -2,8 +2,10 @@
 
 In this time of covid, we work a lot remotely from each other, for example in another space. One can feel lonely here. So we came up with the idea to create an office portal and make it accessible to everyone using Github. With the Office Portal, you can look into another room. With this project, we hope to reduce loneliness in the office by bringing your colleagues a little closer with the help of IT. The GitHub page contains all instructions on how to make an Office Portal yourself, as well as all the necessary code.
 
+# Installing
+We have multiple ways for installing Office Portal on your raspberry pi. The reccomended way is using the GUI. Its is really simple to install and only requires a few steps. But if you want to use/install Office Portal in a diffirent way then you can! We made a diffirent file for other ways of using/installing Office Portal [here](https://github.com/merijndewit/Office_Portal/blob/main/Other.md). If you are happy using the GUI then continue to **Installing GUI**. 
 
-# Installing GUI
+# Installing Office Portal (GUI)
 These steps below will guide you with installing office portals. First we are going to enable a few things in raspi-config and then we are going to clone the github project and run it!
 
 First, get the latest release of [Raspberry Pi OS with desktop and recommended software](https://www.raspberrypi.org/software/operating-systems/)
@@ -39,7 +41,7 @@ And start it:
 
 Then Office Portal should launch and you can use the GUI!
 
-# Using the GUI
+# Using Office_Portal (GUI)
 Once the GUI aplication of Office Portal has started we can see an instrduction screen. we can navigate through the pages with the arrow buttons on the bottom of the page, we can also exit the application by pressing on the ![](https://lh5.googleusercontent.com/qodMuUYRw6y9x0WXSMwhKf-ZAojzPM1lCM52Kvmn75560lSEYFjUx3Bp_xZyysHJOhWI725JOtboAflUWQ9DH3U2uC7x-_gL1oCRDz2QaHu1G_qEGMHmDwnfQ42YzawHteMh_hna) button.
 
 ## Dependencies
