@@ -19,6 +19,7 @@ while True:
     if event in (None, 'Exit'):
         RStream.stopreceivingstream()
         RStream.stopstream()
+        Ring.stopRing()
         break
     if event == 'nextPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
@@ -139,6 +140,7 @@ while True:
     if event == 'prevPage' and staticLayout == 4:
         RStream.stopreceivingstream()
         RStream.stopstream()
+        Ring.stopRing()
         
         
 
