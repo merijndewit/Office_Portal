@@ -5,6 +5,7 @@ import Install_Dependencies as getD
 import Make_Config_File as config
 import Stream as RStream
 import Ring
+import LED
 
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -135,6 +136,8 @@ while True:
             configLines = [ line.strip() for line in f ]
         if RStream.checkReceivestream() == 0 and configLines[5] == 'True':
             Ring.makeTexture()
+        elif RStream.checkReceivestream() == 0 and configLines[4] == 'True':
+            LED.portalLed()
         
             
     if event == 'prevPage' and staticLayout == 4:
