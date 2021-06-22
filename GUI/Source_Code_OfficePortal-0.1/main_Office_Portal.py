@@ -21,6 +21,7 @@ while True:
         RStream.stopreceivingstream()
         RStream.stopstream()
         Ring.stopRing()
+        LED.ledOff()
         break
     if event == 'nextPage':
         window[f'-PG{staticLayout}-'].update(visible=False)
@@ -164,5 +165,6 @@ while True:
         RStream.stopreceivingstream()
         RStream.stopstream()
         Ring.stopRing()
+        LED.ledOff()
         
 window.close()

@@ -16,4 +16,11 @@ def setcolor():
         else:
             pixels.fill((255, 60, 0))
             print('ledOrange')
+
+def ledOff():
+    try:
+        pixels.fill((0, 0, 0))
+
+    except:
+        print('no led strip')
     
