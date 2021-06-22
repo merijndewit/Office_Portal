@@ -4,9 +4,10 @@ import signal
 
 def makeTexture():
     global _ringTexture
-    pathToPicture = 'Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/'
+    
     with open('office_portal.txt') as f:
         configLines = [ line.strip() for line in f ]
+    
     picture = None
     if str(configLines[13]) == "True": #if 1080p resulution is selected
         if configLines[11] == 'True': #if color blue is selected
@@ -18,7 +19,12 @@ def makeTexture():
             picture = '720pblue.png'
         else:
             picture = '720porange.png'
-    _ringTexture = subprocess.Popen(["./raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture + picture], cwd='/home/pi/', preexec_fn=os.setsid)
+
+    if configLines[20] == 'True':
+        pathToPicture = configLines[21]
+    else:
+        pathToPicture = 'Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/' + picture
+    _ringTexture = subprocess.Popen(["./home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture], cwd='/', preexec_fn=os.setsid)
 
 def stopRing():
     global _ringTexture
