@@ -32,7 +32,10 @@ Options = [
         [gui.Text('Framerate:', background_color=textBackground), gui.Input('20', key=('targetFramerate'), size=(2,1))],
         [gui.Text('Portal ring potion:', background_color=textBackground, font=('Helcentica',12))],
         [gui.Text('Color: Blue:', background_color=textBackground), gui.Radio(text=None, group_id=('colorLed'), key=('blueLed'), default=True), gui.Text('Orange:', background_color=textBackground), gui.Radio(text=None, group_id=('colorLed'), key=('orangeLed'))],
-        [gui.Text('Ledstrip:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Text('Texture:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Text('None:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
+        [gui.Text('Choose one of these:', font=("Helcentica", 12), background_color=textBackground)],
+        [gui.Text('Texture:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Button('Texture settings', key='goTextureSettings', mouseover_colors=Theme.mouseOver)],
+        [gui.Text('Ledstrip:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Button('Led settings', key='goLedSettings', mouseover_colors=Theme.mouseOver)],
+        [gui.Text('None:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
         [gui.Text('Startup program on boot:', background_color=textBackground), gui.Checkbox(key=('autoStart'), text=None)]]
 
 advancedOptions = [
@@ -61,12 +64,14 @@ navigationButtons = [
 
 ledstripMenu = [
         [gui.Text('Brightness:', background_color=textBackground), gui.Slider(range=(0,1), default_value=1, resolution=0.1, orientation='h')],
-        [gui.Text('Custom RGB:', background_color=textBackground), gui.Input('255', key=('customR'), size=(3,1)), gui.Input('255', key=('customG'), size=(3,1)), gui.Input('255', key=('customB'), size=(3,1))]]
+        [gui.Text('Custom RGB:', background_color=textBackground), gui.Input('255', key=('customR'), size=(3,1)), gui.Input('255', key=('customG'), size=(3,1)), gui.Input('255', key=('customB'), size=(3,1))],
+        [gui.Button('Back', key='backFromLed', mouseover_colors=Theme.mouseOver)]]
 
 textureMenu = [
-        [gui.Text('Resolution: 1080p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring1080'), default=True), gui.Text('720p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring720'))]]
+        [gui.Text('Resolution: 1080p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring1080'), default=True), gui.Text('720p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring720'))],
+        [gui.Button('Back', key='backFromTexture', mouseover_colors=Theme.mouseOver)]]
 
 staticLayout = [
         [gui.Text('Office Portal',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T0-'), gui.Text('Dependencies',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T1-', visible=False), gui.Text('Options',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T2-', visible=False), gui.Text('Advanced Options',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T3-', visible=False), gui.Text('Connect',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T4-', visible=False), gui.Text('Stream and Receive',font=("Helcentica", 32), background_color=Theme.borderColor, size=(60, 1), key='-T5-', visible=False)],
         [gui.Column(Introduction, key='-PG0-'), gui.Column(Dependencies, visible=False, key='-PG1-'), gui.Column(Options, visible=False, key='-PG2-'), gui.Column(advancedOptions, visible=False, key='-PG3-'), gui.Column(connectPI, visible=False, key='-PG4-'), gui.Column(receiveStream, visible=False, key='-PG5-'), gui.Column(ledstripMenu, key='ledstripmenu', visible=False), gui.Column(textureMenu, key='texturemenu', visible=False)],
-        [gui.Column(navigationButtons)]]
+        [gui.Column(navigationButtons, key='nbuttons')]]

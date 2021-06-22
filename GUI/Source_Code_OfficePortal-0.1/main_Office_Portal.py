@@ -117,9 +117,19 @@ while True:
     if event == 'goTextureSettings':
         window['texturemenu'].update(visible=True)
         window[f'-PG{staticLayout}-'].update(visible=False)
+        window['nbuttons'].update(visible=False)
     elif event == 'goLedSettings':
         window['ledstripmenu'].update(visible=True)
         window[f'-PG{staticLayout}-'].update(visible=False)
+        window['nbuttons'].update(visible=False)
+    if event == 'backFromTexture':
+        window['texturemenu'].update(visible=False)
+        window[f'-PG{staticLayout}-'].update(visible=True)
+        window['nbuttons'].update(visible=True)
+    elif event == 'backFromLed':
+        window['ledstripmenu'].update(visible=False)
+        window[f'-PG{staticLayout}-'].update(visible=True)
+        window['nbuttons'].update(visible=True)
     #######################################################################################
     #receive stream
     #######################################################################################
