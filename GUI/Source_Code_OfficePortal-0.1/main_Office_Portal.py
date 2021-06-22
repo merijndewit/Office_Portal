@@ -111,7 +111,15 @@ while True:
         window.refresh()
         getD.installRaspidmx()
         window['Loading4'].update(visible=False)
-       
+    ###########
+    #options
+    ###########
+    if event == 'goTextureSettings':
+        window['texturemenu'].update(visible=True)
+        window[f'-PG{staticLayout}-'].update(visible=False)
+    elif event == 'goLedSettings':
+        window['ledstripmenu'].update(visible=True)
+        window[f'-PG{staticLayout}-'].update(visible=False)
     #######################################################################################
     #receive stream
     #######################################################################################
