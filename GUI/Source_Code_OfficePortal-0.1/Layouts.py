@@ -70,6 +70,8 @@ ledstripMenu = [
 
 textureMenu = [
         [gui.Text('Resolution: 1080p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring1080'), default=True), gui.Text('720p:', background_color=textBackground), gui.Radio(text=None, group_id=('resRing'), key=('ring720'))],
+        [gui.Text('Click here to use a custom texture mask:', background_color=textBackground), gui.Checkbox(text=None, key='customTexture')],
+        [gui.Text('Select a File (png only)                                                                          ', background_color=textBackground), gui.FileBrowse(button_text='browse', file_types = (('ALL Files', '*.*'),))],
         [gui.Button('Back', key='backFromTexture', mouseover_colors=Theme.mouseOver)]]
 
 staticLayout = [
