@@ -4,7 +4,9 @@ pixels = neopixel.NeoPixel(board.D18, 13)
 pixels.fill((0, 0, 0))
 def setcolor():
     global pixels
-    pixels.brightness = 1
+    with open('office_portal.txt') as f:
+            configLines = [ line.strip() for line in f ]
+    pixels.brightness = float(configLines[16])
     with open('office_portal.txt') as f:
         configLines = [ line.strip() for line in f ]
     
