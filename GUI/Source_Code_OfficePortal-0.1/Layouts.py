@@ -63,7 +63,7 @@ navigationButtons = [
         [gui.Button(key='prevPage', image_filename='Pictures/arrow_left.png', border_width=0, mouseover_colors=Theme.mouseOver, visible=True), gui.Button(key='Exit', image_filename='Pictures/Exit_Button.png', border_width=0, mouseover_colors=Theme.mouseOver),gui.Button(key='nextPage', image_filename='Pictures/arrow_right.png', border_width=0, mouseover_colors=Theme.mouseOver)]]
 
 ledstripMenu = [
-        [gui.Text('Brightness:', background_color=textBackground), gui.Slider(range=(0,1), default_value=1, resolution=0.1, orientation='h')],
+        [gui.Text('Brightness:', background_color=textBackground), gui.Slider(range=(0,1), default_value=1, resolution=0.1, orientation='h', key='slbrightness')],
         [gui.Text('Custom RGB:', background_color=textBackground), gui.Input('255', key=('customR'), size=(3,1)), gui.Input('255', key=('customG'), size=(3,1)), gui.Input('255', key=('customB'), size=(3,1))],
         [gui.Button('Back', key='backFromLed', mouseover_colors=Theme.mouseOver)]]
 
