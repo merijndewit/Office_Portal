@@ -64,6 +64,7 @@ navigationButtons = [
 
 ledstripMenu = [
         [gui.Text('Brightness:', background_color=textBackground), gui.Slider(range=(0,1), default_value=1, resolution=0.1, orientation='h', key='slbrightness')],
+        [gui.Text('Click here to use a custom RGB color for the led strip:', background_color=textBackground), gui.Checkbox(text=None, key='customColor')],
         [gui.Text('Custom RGB:', background_color=textBackground), gui.Input('255', key=('customR'), size=(3,1)), gui.Input('255', key=('customG'), size=(3,1)), gui.Input('255', key=('customB'), size=(3,1))],
         [gui.Button('Back', key='backFromLed', mouseover_colors=Theme.mouseOver)]]
 
