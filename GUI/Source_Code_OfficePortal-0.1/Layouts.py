@@ -44,7 +44,7 @@ advancedOptions = [
         [gui.Text('Its reccomended to only change them if you have a problem', background_color=textBackground)], 
         [gui.Text('Bitrate stream:', background_color=textBackground), gui.Input('4000000', key=('streamBitrate'), size=(8,1))],
         [gui.Text('Port sender:', background_color=textBackground), gui.Input('5000', key=('portSender'), size=(8,1))],
-        [gui.Text('Port receiver:', background_color=textBackground), gui.Input('5000', key=('portReceiver'), size=(8,1))]]
+        [gui.Text('Port receiver:', background_color=textBackground, visible=False), gui.Input('5000', key=('portReceiver'), size=(8,1), visible=False)]]
 
 connectPI = [
         [gui.Text('Its time to connect to the other portal!', font=("Helcentica", 12), background_color=textBackground)],
