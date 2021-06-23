@@ -156,7 +156,7 @@ After the script is done Office Portal should launch automatically.
 Enjoy Office Portal!
 
 
-# How to install (for using the source code):
+# How to install (for running the source code):
 If you want run Office Portal from the source code then you need to install a few dependencies.
 
 First, get the latest release of [Raspberry Pi OS with desktop and recommended software](https://www.raspberrypi.org/software/operating-systems/)
@@ -229,10 +229,10 @@ after we installed the dependencies we can clone the office portal from GitHub:
 
 then we go in the directory of office portal:
 
-	cd Office_Portal/GUI
+	cd Office_Portal/GUI/Source_Code_OfficePortal-0.1
 
 and we start the program by typing:
 
-	python3 Office_Portal/Source_Office_Portal/main_Office_Portal.py
+	sudo -E python3 main_Office_Portal.py
 
 enjoy office portal!
