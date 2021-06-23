@@ -23,7 +23,7 @@ def makeTexture():
     if configLines[20] == 'True':
         pathToPicture = configLines[21]
     else:
-        pathToPicture = 'Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/' + picture
+        pathToPicture = '/home/pi/Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/' + picture
     _ringTexture = subprocess.Popen(["./home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture], cwd='/', preexec_fn=os.setsid)
 
 def stopRing():
