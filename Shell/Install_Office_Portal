@@ -1,4 +1,3 @@
-git clone https://github.com/merijndewit/Office_Portal.git
 git clone https://github.com/thaytan/gst-rpicamsrc.git
 sudo apt-get update
 sudo apt-get upgrade
@@ -14,4 +13,5 @@ pip3 install PySimpleGui
 pip3 install Netifaces
 pip3 install adafruit-circuitpython-ws2801
 sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
-python3 Office_Portal/GUI/Source_Code_OfficePortal-0.1/Office_Portals.py
+cd Office_Portal/GUI/Source_Code_OfficePortal-0.1/
+sudo -E python3 main_Office_Portal.py
