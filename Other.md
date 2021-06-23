@@ -113,7 +113,7 @@ For receiving the stream we want to do to the directory of the .spd file we've j
 
 Now the PI's should be streaming video and receiving video from eachother!
 
-# How to install GUI (using shell):
+# How to install Office Portal with dependencies (using shell):
 The shell script will install all the dependencies you need using Office Portal. When you install it via the shell you are also able to run the uncompiled source code. 
 
 
@@ -141,9 +141,7 @@ Then we have to clone Office_Portal from GitHub:
 
 	git clone https://github.com/merijndewit/Office_Portal.git
 
-	git clone https://github.com/thaytan/gst-rpicamsrc.git
-
-Then we have to type:
+To be able to run the shell script we have to type:
 
 	sudo chmod +x Office_Portal/Shell/Install_Office_Portal
 
