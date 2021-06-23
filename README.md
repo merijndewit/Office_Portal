@@ -49,7 +49,17 @@ Once we go to the next page from the introduction page we can see all the depend
 
 ## Options
 In the option page we can change the stream specifications. You can change the resolution of the stream and framerate that you are sending to the other pi.
-(more coming later)
+
+We also have an option for the portal ring. We can use the portal ring to make our portal look more like a portal. We can use an LED strip or a digital mask. If you dont want either of those you can click on **None** and continue to the next page. If you want to make use of an on-screen mask or LED strip then you can select **blue** or  **orange** depending wich color you want the mask/ledstrip to be of the portal. If you want to make use of an on-screen mask, example:
+
+![](https://lh5.googleusercontent.com/X2p26R8XaFDW5qQZAvL3D1nfS4F5fgQ2VNSqUXmALaSQMEybxWikpIITuIYjHFoxezHeKY6f5l1cJ_QrcdaU0CRgtlsF1QLjLHCt0Rb7rjFzXMHfuhUoxevKXVNb15VyGmH3Yyw2)
+
+Then you can select **Texture**. When you click on the button **Texture Settings** a menu opens with more options. The first option is the resolution (default is 1080p). If you have a 720p resolution screen then select **720p**. If you have a monitor with a diffirent resolution than 1080/720p or you want to use your a custom on-screen digital mask then cluck the checkbox and click on **Browse** and select your custom mask. 
+>Note: Only .PNG is supported another filetype will not work.
+
+If you want to use an LED strip then select **Ledstrip**. When you click on the button **Ledstrip Settings** a menu opens with extra settings. Here you can adjust the brightness of the led's. If you want to use a custom color for the LED strip select the checkbox and in the boxes below enter the Decimal RGB code. The first box is the red value, the second green and the third is blue. The values go from 0-255.
+When you entered the options you want you can continue to the next page.
+ 
 
 ## Advanced Options
 Here you can change the bitrate and port of the stream you are sending. 
