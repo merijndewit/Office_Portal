@@ -12,7 +12,8 @@ Introduction = [
         [gui.Text('A nerdy solution to make distant colleagues feel nearby', font=("Helcentica", 12), background_color=textBackground)],
         [gui.Text('Welcome to Office Portal!', background_color=textBackground)],
         [gui.Text('Before we can start we need to do the setup first', background_color=textBackground)],
-        [gui.Text('Click on the button next page to start the setup.', background_color=textBackground)]]
+        [gui.Text('Click on the button next page to start the setup.', background_color=textBackground)],
+        [gui.Text('Click here to check for previous config:', key='checkConfigText', visible=True, background_color=textBackground),gui.Button('Load settings', key='checkConfigButton', visible=True, mouseover_colors=Theme.mouseOver), gui.Text('Config file found! press this botton to load the config and go to stream and receive:', key='configText', visible=False, background_color=textBackground), gui.Button('Load Config', key='configButton', visible=False, mouseover_colors=Theme.mouseOver), gui.Text('no config found', visible=False, key='noConfig', background_color=textBackground)]]
 
 Dependencies = [
         [gui.Text('To use Office Portal you need to have installed a few dependencies.', background_color=textBackground)],

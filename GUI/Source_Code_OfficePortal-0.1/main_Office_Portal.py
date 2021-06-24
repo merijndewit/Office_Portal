@@ -1,4 +1,5 @@
 import PySimpleGUI as gui
+import os
 import Layouts
 import Get_Dependencies as getdp
 import Install_Dependencies as getD
@@ -33,6 +34,30 @@ while True:
         window[f'-T{staticLayout}-'].update(visible=False)
         window[f'-PG{staticLayout}-'].update(visible=False)
         staticLayout = staticLayout - 1 if staticLayout > 0 else 0
+        window[f'-PG{staticLayout}-'].update(visible=True)
+        window[f'-T{staticLayout}-'].update(visible=True)
+    ##############
+    #Intro
+    ##############
+    if event == 'checkConfigButton' and os.path.isfile('./office_portal.txt'):
+        window['checkConfigText'].update(visible=False)
+        window['checkConfigButton'].update(visible=False)
+        window['configText'].update(visible=True)
+        window['configButton'].update(visible=True)
+    else:
+        window['noConfig'].update(visible=True)
+
+    if event == 'configButton':
+        RStream.stream()
+        if RStream.checkstream() == 0:
+            window['streaming'].update(visible=True)
+            window['notStreaming'].update(visible=False)
+        else:
+            window['notStreaming'].update(visible=True)
+            window['streaming'].update(visible=False)
+        window[f'-PG{staticLayout}-'].update(visible=False)
+        window[f'-T{staticLayout}-'].update(visible=False)
+        staticLayout = 5
         window[f'-PG{staticLayout}-'].update(visible=True)
         window[f'-T{staticLayout}-'].update(visible=True)
 
