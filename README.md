@@ -1,75 +1,40 @@
 # Welcome to Office Portal!
 
-  
-
 In this time of covid, we work a lot remotely from each other, for example in another space. One can feel lonely here. So we came up with the idea to create an office portal and make it accessible to everyone using Github. With the Office Portal, you can look into another room. With this project, we hope to reduce loneliness in the office by bringing your colleagues a little closer with the help of IT. The GitHub page contains all instructions on how to make an Office Portal yourself, as well as all the necessary code.
-
-  
 
 # Installing
 
 We have multiple ways for installing Office Portal on your raspberry pi. The recommended way is to use the GUI. It is really simple to install and only requires a few steps. But if you want to use/install Office Portal in a different way then you can! We made a different file (because it is so long) for other ways of using/installing Office Portal [here](https://github.com/merijndewit/Office_Portal/blob/main/Other.md). If you are happy using the GUI then continue to **Installing GUI**.
 
-  
-
 # Installing Office Portal (GUI)
 
 The steps below will guide you in installing office portals. First, we are going to enable a few things in raspi-config and then we are going to clone the GitHub project and run it!
 
-  
-
 First, get the latest release of [Raspberry Pi OS with desktop and recommended software](https://www.raspberrypi.org/software/operating-systems/)
-
-  
 
 After you installed raspberry pi os and booted into the os connect to a wifi network and check for updates with:
 
-  
-
-  
-
 	sudo apt-get update && sudo apt-get upgrade
 
-  
-
-  
-
 Then we have to enable the SPI interface and the camera to do this type:
-
-  
 
 	sudo raspi-config
 
 ![](https://lh3.googleusercontent.com/N5ixPNQmhdGdpBPIRT9QnviQ9U4I8VzbxSc9oxz7mwE_Pi2Kz2-xPr5xk3ogaVI8aaA9b6JzIURP9MjG-w-Z-eqWHvUbEroG8IY3Mdf3h1qxTKxCTX9ItYy9goHzbiTeFQV3KtPs)
 
-  
-
 You should see a menu pop up like in the picture. Go to option 3 (interface options). And enable the camera interface and the SPI interface. When you are done click on “Finish” and reboot the pi.
-
-  
 
 Then we clone the project from GitHub:
 
-  
-
 	git clone https://github.com/merijndewit/Office_Portal.git
 
-  
-
 After we've cloned the project we want to go to the directory of the executable:
-
-  
 
 	cd Office_Portal/GUI/OfficePortal-0.1/
 
 And start it:
 
-  
-
 	./main_Office_Portal
-
-  
-  
 
 Then Office Portal should launch and you can use the GUI!
 
@@ -85,13 +50,9 @@ Once the GUI application of Office Portal has started we can see an instruction 
 
 Once we go to the next page from the introduction page we can see all the dependencies that need to be installed. Click on the **check** button. if you see a **green check** next to the button you've just clicked then the dependency is installed. if you see a **download button** next to the button you've just clicked then the dependency is not yet installed and it needs to be installed. To install it is really easy you just have to click on the **download button** and the program will install it for you. It can take a bit until it’s installed (approx 5 min) when the **download button** disappears the dependency has been installed. You can press check gain if you want to make sure the dependency has been installed correctly.
 
-  
-
 ## Options
 
 On the options page, we can change the stream specifications. You can change the resolution of the stream and framerate that you are sending to the other pi.
-
-  
 
 We also have an option for the portal ring. We can use the portal ring to make our portal look more like a portal. We can use an LED strip or a digital mask. If you don’t want either of those you can click on **None** and continue to the next page. If you want to make use of an on-screen mask or LED strip then you can select **blue** or **orange** depending which color you want the mask/led strip to be of the portal. If you want to make use of an on-screen mask, for example:
 
@@ -116,10 +77,7 @@ When you entered the options you want you can continue to the next page.
 ## Advanced Options
 
 Here you can change the bitrate and port of the stream you are sending.
-
 You do not have to change the settings, only when you encounter a problem.
-
-  
 
 >Note: the port has to be the same on both PIs otherwise you may encounter problems
 
@@ -127,13 +85,9 @@ You do not have to change the settings, only when you encounter a problem.
 
 Here we can see the IP address of this pi. When you are on the same screen on the other pi we need to enter this pis IP into the **textbox** of the other pi's IP. then with the other pi, we need to fill its IP into the **textbox**. once you’ve done that we can go to the final page!
 
-  
-
 ## Stream and Receive
 
 When you are on this page on **both PIs** we are ready to click receive on both pis. When we click on **Ready** the pi will try to receive the stream of the other pi. When you've clicked **Ready** on both pis the portal should be open!
-
-  
 
 ## Load config file
 
@@ -182,3 +136,12 @@ The PI 3B+ is not compatible with all resolutions because it has a hard time kee
 Its best for the Monitor/Television to be the same size. Otherwise it can look a bit odd if one portal is bigger than the other. We reccomend not choosing a resolution greater than 1080p, a higher resolution Monitor/Television is usually more expensive and the pi's cant handle a higher resolution than 1080p. The aspect ratio is also an important one. **16:9** and **4:3** is highly reccomended. The most important is that the Camera has to support that aspect ratio most camera modules for the raspberry pi can support 16:9 and 4:3, But make sure to check the documentation of that camera. If you do have a diffirent aspect ratio it can result in black bars on the screen or stretching (something you dont want). Also an important one is to be sure you can remove the foot of the Monitor/Television, also the flatter the better because you want to try to hide the Monitor/Television. 
 
 >Note: The Monitor/Television is the most expensive part of the project, so maybe you can find a Monitor/Television at a second hand store. Or maybe at an online marketplace like ebay. This will bring the cost of the project down a lot! Just remember all the points written above!
+
+
+
+## Camera
+For this project only camera modules with CSI interface is supported. The CSI camera module is directly connected to the GPU, this means the cpu usage is really low using a CSI camera compared to an USB device. Camera modules are also really cheap (the cheapest ones arround 5€). Another advantage is that camera modules are really small so they are less noticable/easyer to hide.
+
+A few important things to note when you are looking for a CSI camera is that you choose one that supports the aspect ratio of your television. Otherwise this can cause problems so make sure you check the documentation of the camera module. Also some camera's dont have their full fov when using 1080p. When you are using a camera module that is not using full fov then the video looks zoomed in you dont want this because it can look weird and you wont be able to see as much of the other room.
+
+Some great documentation of the pi camera's can be found[Here](https://picamera.readthedocs.io/en/release-1.3/fov.html)
