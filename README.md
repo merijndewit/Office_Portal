@@ -56,10 +56,10 @@ On the options page, we can change the stream specifications. You can change the
 
 We also have an option for the portal ring. We can use the portal ring to make our portal look more like a portal. We can use an LED strip or a digital mask. If you don’t want either of those you can click on **None** and continue to the next page. If you want to make use of an on-screen mask or LED strip then you can select **blue** or **orange** depending which color you want the mask/led strip to be of the portal. If you want to make use of an on-screen mask, for example:
 
+![](https://lh4.googleusercontent.com/fTpMh55sUaVGSj0Lq7JHZtf2fOemiq-XaMOdPv3cz7747RRMTX-LyzBzjqQ03MI9pQcUK-kqBYx5FkxrgffkFeEEbTPRar3UJcl6CH5iBSYow7PKM5WnF8w3Y-Ad5RkRlLdedhgj)  
   
-
-![](https://lh5.googleusercontent.com/X2p26R8XaFDW5qQZAvL3D1nfS4F5fgQ2VNSqUXmALaSQMEybxWikpIITuIYjHFoxezHeKY6f5l1cJ_QrcdaU0CRgtlsF1QLjLHCt0Rb7rjFzXMHfuhUoxevKXVNb15VyGmH3Yyw2)
-
+  
+**
   
 
 Then you can select **Texture**. When you click on the button **Texture Settings** a menu opens with more options. The first option is the resolution (default is 1080p). If you have a 720p resolution screen then select **720p**. If you have a monitor with a different resolution than 1080/720p or you want to use a custom on-screen digital mask then click the checkbox and click on **Browse** and select your custom mask.
@@ -127,8 +127,8 @@ Down here are the results from the test i did. with the pi 3B+ and pi 4B:
 |----------------|-----------------|---------------|
 |1080p / 30fps|**X**       |✔           
 |1080p / 20fps|✔           |✔           
-|720p / 45fps |**X**	   |✔
-|720p / 30fps | ✔     	   |✔
+|730p / 45fps |**X**	   |✔
+|730p / 30fps | ✔     	   |✔
 
 The PI 3B+ is not compatible with all resolutions because it has a hard time keeping up with the stream. This can result in a delay. The raspberry pi 4 is obviously the best choice for video quality. But if you dont mind a lower framerate or resolution then the pi 3B+ is the cheaper option. Just pick whichever you prefer!
 
@@ -145,3 +145,14 @@ For this project only camera modules with CSI interface is supported. The CSI ca
 A few important things to note when you are looking for a CSI camera is that you choose one that supports the aspect ratio of your television. Otherwise this can cause problems so make sure you check the documentation of the camera module. Also some camera's dont have their full fov when using 1080p. When you are using a camera module that is not using full fov then the video looks zoomed in you dont want this because it can look weird and you wont be able to see as much of the other room.
 
 Some great documentation of the pi camera's can be found[Here](https://picamera.readthedocs.io/en/release-1.3/fov.html)
+
+## Mask (optional)
+If you want the portal to look as much as a portal then making a mask over the monitor/television is the best option. You can also combine it with an LED strip to make it even more special. You can make the mask as large or larger than the television. Below here is an example:
+  
+![](https://lh3.googleusercontent.com/qC-AriLLLJQyNeIzerTfIMCpIxaYq90gM5C05NwUfxgkgLpmzLxg1wMssx-HUAqA_D6cW7McOYKudOhqy0jdOms4DcYxBIy5YgNLQB1i3sV8ifEGsFy3GNJtHyHn0MP-4O1GvpVB)
+If you want the portal to look like a portal from the game Portal then you can 
+
+
+
+![](https://lh6.googleusercontent.com/iYh2_nIJ2SPGjofidpz-UiyobAopU85CWIAEa6G-duTu6ZzFpmKHvtRNHZQ1cWGnBXgWKBZYpq-LRP8Lm1W1QoUJ0oMZrjr8K6dN-u7_rF_s-1zd37K2Ur5LHZeYqhiKIlDEEKsj)**
+## LED strip (optional)
