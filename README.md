@@ -135,7 +135,7 @@ The PI 3B+ is not compatible with all resolutions because it has a hard time kee
 ## Monitor/Television
 Its best for the Monitor/Television to be the same size. Otherwise it can look a bit odd if one portal is bigger than the other. We reccomend not choosing a resolution greater than 1080p, a higher resolution Monitor/Television is usually more expensive and the pi's cant handle a higher resolution than 1080p. The aspect ratio is also an important one. **16:9** and **4:3** is highly reccomended. The most important is that the Camera has to support that aspect ratio most camera modules for the raspberry pi can support 16:9 and 4:3, But make sure to check the documentation of that camera. If you do have a diffirent aspect ratio it can result in black bars on the screen or stretching (something you dont want). Also an important one is to be sure you can remove the foot of the Monitor/Television, also the flatter the better because you want to try to hide the Monitor/Television. 
 
->Note: The Monitor/Television is the most expensive part of the project, so maybe you can find a Monitor/Television at a second hand store. Or maybe at an online marketplace like ebay. This will bring the cost of the project down a lot! Just remember all the points written above!
+>Note: The Monitor/Television is the most expensive part of the project, so maybe you can find a Monitor/Television at a second hand store. Or maybe at an online marketplace like Ebay. This will bring the cost of the project down a lot! Just remember all the points written above!
 
 
 
@@ -144,15 +144,21 @@ For this project only camera modules with CSI interface is supported. The CSI ca
 
 A few important things to note when you are looking for a CSI camera is that you choose one that supports the aspect ratio of your television. Otherwise this can cause problems so make sure you check the documentation of the camera module. Also some camera's dont have their full fov when using 1080p. When you are using a camera module that is not using full fov then the video looks zoomed in you dont want this because it can look weird and you wont be able to see as much of the other room.
 
-Some great documentation of the pi camera's can be found[Here](https://picamera.readthedocs.io/en/release-1.3/fov.html)
+Some great documentation of the pi camera's can be found [Here](https://picamera.readthedocs.io/en/release-1.3/fov.html)
 
 ## Mask (optional)
 If you want the portal to look as much as a portal then making a mask over the monitor/television is the best option. You can also combine it with an LED strip to make it even more special. You can make the mask as large or larger than the television. Below here is an example:
   
 ![](https://lh3.googleusercontent.com/qC-AriLLLJQyNeIzerTfIMCpIxaYq90gM5C05NwUfxgkgLpmzLxg1wMssx-HUAqA_D6cW7McOYKudOhqy0jdOms4DcYxBIy5YgNLQB1i3sV8ifEGsFy3GNJtHyHn0MP-4O1GvpVB)
-If you want the portal to look like a portal from the game Portal then you can 
+This sketch above is an example of the layout of the portal. Its gonna be different for everyone, but it is important to hide as much as possible from the hardware behind the mask.
+
+Here is a 3D model of an example of the portal:
+![](https://lh6.googleusercontent.com/iYh2_nIJ2SPGjofidpz-UiyobAopU85CWIAEa6G-duTu6ZzFpmKHvtRNHZQ1cWGnBXgWKBZYpq-LRP8Lm1W1QoUJ0oMZrjr8K6dN-u7_rF_s-1zd37K2Ur5LHZeYqhiKIlDEEKsj)
+
+The mask is an MDF sheet with an oval hole in the middle. You can draw an oval on the sheet and saw it out with  a reciprocating saw. Or a cnc machine for the best result. Make sure you wont be able to see the borders of the television/monitor. There is also a small hole in the MDF sheet for the CSI camera. This hole has to be really small so we see the least of the camera:
+  
+![](https://lh5.googleusercontent.com/j2cBdrL7W0Kmkm0wUES7JEKceh26aJ1gtrfTKYyRk4mbbttRGNva8qLEepoHKnoJjjDpmR5347PV3Jq4nnnBC2CxSq5FsRitIbYnrNQ-ZrpiwUBLTN44p48pn2cngrvb_K909fi_)  
 
 
-
-![](https://lh6.googleusercontent.com/iYh2_nIJ2SPGjofidpz-UiyobAopU85CWIAEa6G-duTu6ZzFpmKHvtRNHZQ1cWGnBXgWKBZYpq-LRP8Lm1W1QoUJ0oMZrjr8K6dN-u7_rF_s-1zd37K2Ur5LHZeYqhiKIlDEEKsj)**
-## LED strip (optional)
+For the texture on the MDF sheet you can do anything you like. In the 3D model we've use the wall texture of the game Portal. You can order a printed wrap/sticker from your local (web)store with [This](https://ia801903.us.archive.org/14/items/portaltexturerocksliqmetal/concrete_modular_ceiling2.png) texture.
+If you are crafty you can also paint a texture you like on the mask.
