@@ -118,7 +118,8 @@ If you want/need to buy all the materials its is going to cost you arround this:
 |Total:|187€
 >Note: Dont forget that you need to multiple the price by 2, because you need 2 portals
 
-There are a lot of options for the hardware. To make sure that you are picking the right materials for the project, We wrote down what is required/reccomended for the project. 
+There are a lot of options for the hardware. To make sure that you are picking the right materials for the project, We wrote down what is required/reccomended for the project.
+ 
 ## Raspberry PI
 For the raspberry pi we have a lot of options. For this project ive tested the raspberry pi 4B, 3B+ and the zero w. The zero w was not powerfull enough for this project when testing, thats why i do not advertise using it or this project. 
 Down here are the results from the test i did. with the pi 3B+ and pi 4B:
@@ -145,6 +146,12 @@ For this project only camera modules with CSI interface is supported. The CSI ca
 A few important things to note when you are looking for a CSI camera is that you choose one that supports the aspect ratio of your television. Otherwise this can cause problems so make sure you check the documentation of the camera module. Also some camera's dont have their full fov when using 1080p. When you are using a camera module that is not using full fov then the video looks zoomed in you dont want this because it can look weird and you wont be able to see as much of the other room.
 
 Some great documentation of the pi camera's can be found [Here](https://picamera.readthedocs.io/en/release-1.3/fov.html)
+
+### Tip for mounting the camera:
+The camera will be mounted at the side of the television. Ideally we would want to mound the camera in the center of the television, but it would partly block the television screen. Thats why its reccomended to mount the camera on an angle:
+  
+![](https://lh3.googleusercontent.com/1NGCKisFRH2W6mmE69JbjRH1i-6vdhqtIibKKnrgm5sJmmSOWyFrl3MLjZb0hPxNVGRVJ3hBBomcPMUAy89KBSjb8dJYS4syLDOWgBR3lJfp-jvd_fS7ieUJDv8MUMnqu2En5h3z)
+It is not as good as mounting the camera in the center but it is better than mounting the camera 
 
 ## Mask (optional)
 If you want the portal to look as much as a portal then making a mask over the monitor/television is the best option. You can also combine it with an LED strip to make it even more special. You can make the mask as large or larger than the television. Below here is an example:
