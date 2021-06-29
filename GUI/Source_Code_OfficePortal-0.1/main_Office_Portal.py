@@ -1,5 +1,5 @@
 import PySimpleGUI as gui
-import os
+import sys,os
 import Layouts
 import Get_Dependencies as getdp
 import Install_Dependencies as getD
@@ -10,6 +10,11 @@ import LED
 
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
+
+if getattr(sys, 'frozen', False):
+    cd = os.path.dirname(sys.executable)
+else:
+    cd = os.path.dirname(os.path.abspath(__file__))
 
 staticLayout = 0
 while True:
@@ -39,7 +44,7 @@ while True:
     ##############
     #Intro
     ##############
-    if event == 'checkConfigButton' and os.path.isfile('./office_portal.txt'):
+    if event == 'checkConfigButton' and os.path.isfile(cd + '/office_portal.txt'):
         window['checkConfigText'].update(visible=False)
         window['checkConfigButton'].update(visible=False)
         window['configText'].update(visible=True)
@@ -176,7 +181,7 @@ while True:
             
     if event == 'readyStream':
         RStream.makespdfile()
-        with open('office_portal.txt') as f:
+        with open(cd + '/office_portal.txt') as f:
             configLines = [ line.strip() for line in f ]
         canStream = RStream.checkReceivestream() 
         if canStream == 0 and configLines[5] == 'True':

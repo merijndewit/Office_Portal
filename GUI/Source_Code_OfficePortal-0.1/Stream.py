@@ -1,20 +1,23 @@
 import subprocess
 import signal
-import os
+import sys,os
 import time
 
-
+if getattr(sys, 'frozen', False):
+    cd = os.path.dirname(sys.executable)
+else:
+    cd = os.path.dirname(os.path.abspath(__file__))
 
 def receiveStream():
     global _rcstream
     _rcstream = None
-    _rcstream = subprocess.Popen(["omxplayer", "--live", "stream.spd"], preexec_fn=os.setsid)
+    _rcstream = subprocess.Popen(["omxplayer", "--live", cd + "/stream.spd"], preexec_fn=os.setsid)
     print("started stream")
 
 def makespdfile():
-    config = open('office_portal.txt')
+    config = open(cd + '/office_portal.txt')
     configLines = config.readlines()
-    f = open('stream.spd', "w+")
+    f = open(cd + '/stream.spd', "w+")
     f.writelines(["v=0\n","m=video 5000 RTP/AVP 96\n","c=IN IP4 " + configLines[0],"a=rtpmap:96 H264/90000"])
     f.close()
     config.close()
@@ -23,7 +26,7 @@ def makespdfile():
     receiveStream()
 
 def stream():
-    with open('office_portal.txt') as f:
+    with open(cd + '/office_portal.txt') as f:
         configLines = [ line.strip() for line in f ]
     global _stream
     _stream = None

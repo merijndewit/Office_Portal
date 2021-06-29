@@ -1,11 +1,15 @@
 import subprocess
-import os
+import sys,os
 import signal
+
+if getattr(sys, 'frozen', False):
+    cd = os.path.dirname(sys.executable)
+else:
+    cd = os.path.dirname(os.path.abspath(__file__))
 
 def makeTexture():
     global _ringTexture
-    
-    with open('office_portal.txt') as f:
+    with open(cd + '/office_portal.txt') as f:
         configLines = [ line.strip() for line in f ]
     
     picture = None
@@ -23,7 +27,7 @@ def makeTexture():
     if configLines[20] == 'True':
         pathToPicture = configLines[21]
     else:
-        pathToPicture = '/home/pi/Office_Portal/GUI/Source_Code_OfficePortal-0.1/Pictures/' + picture
+        pathToPicture = (cd + '/Pictures/' + picture)
     _ringTexture = subprocess.Popen(["./home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture], cwd='/', preexec_fn=os.setsid)
 
 def stopRing():

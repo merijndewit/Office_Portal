@@ -1,11 +1,18 @@
 from typing import Awaitable
 import board
 import neopixel
+import sys,os
+
+if getattr(sys, 'frozen', False):
+    cd = os.path.dirname(sys.executable)
+else:
+    cd = os.path.dirname(os.path.abspath(__file__))
+
 pixels = neopixel.NeoPixel(board.D18, 13)
 pixels.fill((0, 0, 0))
 def setcolor():
     global pixels
-    with open('office_portal.txt') as f:
+    with open(cd + '/office_portal.txt') as f:
             configLines = [ line.strip() for line in f ]
     pixels.brightness = float(configLines[16])
     if configLines[15] == 'True':
