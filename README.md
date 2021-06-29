@@ -28,13 +28,9 @@ Then we clone the project from GitHub:
 
 	git clone https://github.com/merijndewit/Office_Portal.git
 
-After we've cloned the project we want to go to the directory of the executable:
+After we've cloned the project we want to execute it:
 
-	cd Office_Portal/GUI/OfficePortal-0.1/
-
-And start it:
-
-	./main_Office_Portal
+	sudo Office_Portal/GUI/OfficePortal-0.1/main_Office_Portal
 
 Then Office Portal should launch and you can use the GUI!
 
