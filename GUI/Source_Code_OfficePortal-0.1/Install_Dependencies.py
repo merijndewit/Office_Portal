@@ -8,7 +8,7 @@ def installGstreamertools():
 
 def installRpicamsrc():
     global _install
-    _install = subprocess.Popen(["git clone https://github.com/thaytan/gst-rpicamsrc.git && cd gst-rpicamsrc && ./autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/ && make && sudo make install"], shell=True, cwd='/home/pi')
+    _install = subprocess.Popen(["git clone https://github.com/thaytan/gst-rpicamsrc.git && cd gst-rpicamsrc && ./autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/ && make && sudo make install"], shell=True)
     _install.wait()
 def installGstreamerdev():
     global _install
@@ -17,5 +17,5 @@ def installGstreamerdev():
 
 def installRaspidmx():
     global _install
-    _install = subprocess.Popen(["git clone https://github.com/AndrewFromMelbourne/raspidmx && cd raspidmx && sudo make"], shell=True, cwd='/home/pi')
+    _install = subprocess.Popen(["git clone https://github.com/AndrewFromMelbourne/raspidmx && cd raspidmx && sudo make"], shell=True)
     _install.wait()

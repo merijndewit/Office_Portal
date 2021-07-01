@@ -6,7 +6,7 @@ if getattr(sys, 'frozen', False):
     cd = os.path.dirname(sys.executable)
 else:
     cd = os.path.dirname(os.path.abspath(__file__))
-
+print(cd)
 def makeTexture():
     global _ringTexture
     with open(cd + '/office_portal.txt') as f:
@@ -28,7 +28,11 @@ def makeTexture():
         pathToPicture = configLines[21]
     else:
         pathToPicture = (cd + '/Pictures/' + picture)
-    _ringTexture = subprocess.Popen(["./home/pi/raspidmx/pngview/pngview", "-b", "0", "-l", "3", pathToPicture], cwd='/', preexec_fn=os.setsid)
+    for root, dirs, files in os.walk("/"):
+            if "pngview" in files:
+                pngviewPath = os.path.join(root, "pngview")
+                break
+    _ringTexture = subprocess.Popen(["." + pngviewPath, "-b", "0", "-l", "3", pathToPicture], cwd='/', preexec_fn=os.setsid)
 
 def stopRing():
     global _ringTexture

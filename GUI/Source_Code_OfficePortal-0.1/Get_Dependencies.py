@@ -56,7 +56,7 @@ def checkRaspidmx():
     try:
         for root, dirs, files in os.walk("/"):
             if "pngview" in files:
-                print(os.path.join(root, "pngview"))
+                print(os.path.join("raspidmx installed in:",root, "pngview"))
                 return(1)
         else:
             return(0)
