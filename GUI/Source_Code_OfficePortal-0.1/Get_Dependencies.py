@@ -1,6 +1,6 @@
 #In this file we check if the required dependencies are installed
 from subprocess import check_output
-from os import path
+import os
 import time
 
 def checkGstreamer():
@@ -37,6 +37,7 @@ def checkRpicamsrc():
             return(0)
     except:
         return(0)
+        
 def checkGstreamerdev():
     #check if gstreamerdev is installed
     out = check_output(["dpkg -l | grep gstreamer"], shell = True)
@@ -53,8 +54,10 @@ def checkGstreamerdev():
 def checkRaspidmx():
     #check if Raspidmx is installed
     try:
-        if path.exists('/home/pi/raspidmx/pngview'):
-            return(1)
+        for root, dirs, files in os.walk("/"):
+            if "pngview" in files:
+                print(os.path.join(root, "pngview"))
+                return(1)
         else:
             return(0)
     except:
