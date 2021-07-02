@@ -3,6 +3,7 @@ __pycache__/
 .vscode
 /GUI/build/**
 /GUI/dist/**
-office_portal.txt
+config.txt
 stream.spd
 main_Office_Portal.spec
+
