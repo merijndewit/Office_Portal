@@ -2,6 +2,7 @@ import subprocess
 import signal
 import sys,os
 import time
+import json
 
 if getattr(sys, 'frozen', False):
     cd = os.path.dirname(sys.executable)
@@ -15,22 +16,21 @@ def receiveStream():
     print("started stream")
 
 def makespdfile():
-    config = open(cd + '/office_portal.txt')
-    configLines = config.readlines()
-    f = open(cd + '/stream.spd', "w+")
-    f.writelines(["v=0\n","m=video 5000 RTP/AVP 96\n","c=IN IP4 " + configLines[0],"a=rtpmap:96 H264/90000"])
-    f.close()
-    config.close()
+    with open(cd + '/config.txt') as json_file:
+        config = json.load(json_file)
+        f = open(cd + '/stream.spd', "w+")
+        f.writelines(["v=0\n","m=video 5000 RTP/AVP 96\n","c=IN IP4 " + config['ip'] + "\n","a=rtpmap:96 H264/90000"])
+        f.close()
     print("file created")
     time.sleep(1)
     receiveStream()
 
 def stream():
-    with open(cd + '/office_portal.txt') as f:
-        configLines = [ line.strip() for line in f ]
-    global _stream
-    _stream = None
-    _stream = subprocess.Popen(["gst-launch-1.0","rpicamsrc","preview=False","name=videosrc","bitrate=",configLines[8],"!","h264parse","!","video/x-h264,framerate=" + configLines[3] + "/1,","width=",configLines[1],",height=",configLines[2],"!","rtph264pay","pt=96","config-interval=5","!","udpsink","host=",configLines[0],"port=", configLines[9]], preexec_fn=os.setsid)
+    with open(cd + '/config.txt') as json_file:
+        config = json.load(json_file)
+        global _stream
+        _stream = None
+        _stream = subprocess.Popen(["gst-launch-1.0","rpicamsrc","preview=False","name=videosrc","bitrate=",config['bitrate'],"!","h264parse","!","video/x-h264,framerate=" + config['framerate'] + "/1,","width=",config['pixelWidth'],",height=",config['pixelHeight'],"!","rtph264pay","pt=96","config-interval=5","!","udpsink","host=",config['ip'],"port=", config['portSend']], preexec_fn=os.setsid)
     print("started stream for CSI camera")
 
 def stopstream():

@@ -7,6 +7,7 @@ import Make_Config_File as config
 import Stream as RStream
 import Ring
 import LED
+import json
 
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -44,7 +45,7 @@ while True:
     ##############
     #Intro
     ##############
-    if event == 'checkConfigButton' and os.path.isfile(cd + '/office_portal.txt'):
+    if event == 'checkConfigButton' and os.path.isfile(cd + '/config.txt'):
         window['checkConfigText'].update(visible=False)
         window['checkConfigButton'].update(visible=False)
         window['configText'].update(visible=True)
@@ -166,11 +167,8 @@ while True:
     #######################################################################################
     if event == 'nextPage' and staticLayout == 5:
         configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed', 'ring1080', 'ring720', 'customColor', 'slbrightness', 'customR', 'customG', 'customB', 'customTexture', 'customPath']
-        config.clearConfigfile()
-        for i in range(len(configspecs)):
-            varmakeconfig = dict(zip('config.', configspecs[i]))
-            varmakeconfig = values[configspecs[i]]
-            config.makeConfig(varmakeconfig)
+        config.clearConfigfile()           
+        config.makeConfig(values, configspecs)
         RStream.stream()
         if RStream.checkstream() == 0:
             window['streaming'].update(visible=True)
@@ -181,16 +179,15 @@ while True:
             
     if event == 'readyStream':
         RStream.makespdfile()
-        with open(cd + '/office_portal.txt') as f:
-            configLines = [ line.strip() for line in f ]
-        canStream = RStream.checkReceivestream() 
-        if canStream == 0 and configLines[5] == 'True':
-            Ring.makeTexture()
-        elif canStream == 0 and configLines[4] == 'True':
-            print('startled')
-            LED.setcolor()
-        
-            
+        with open(cd + '/config.txt') as json_file:
+            config = json.load(json_file)
+            canStream = RStream.checkReceivestream() 
+            if canStream == 0 and config['ledTexture'] == True:
+                Ring.makeTexture()
+            elif canStream == 0 and config['ledStrip'] == True:
+               print('startled')
+               LED.setcolor()
+              
     if event == 'prevPage' and staticLayout == 4:
         RStream.stopreceivingstream()
         RStream.stopstream()
