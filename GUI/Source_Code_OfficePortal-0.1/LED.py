@@ -25,6 +25,9 @@ def setcolor():
                 pixels.fill((255, 60, 0))
                 print('ledOrange')
 
+def showColor(rgb):
+    pixels.fill((int(rgb[0]), int(rgb[1]), int(rgb[2])))
+
 def ledOff():
     try:
         pixels.fill((0, 0, 0))

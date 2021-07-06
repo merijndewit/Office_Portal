@@ -162,6 +162,12 @@ while True:
         window['ledstripmenu'].update(visible=False)
         window[f'-PG{staticLayout}-'].update(visible=True)
         window['nbuttons'].update(visible=True)
+
+    if event == 'showColor':
+        rgb = (values['customR'], values['customG'], values['customB'])
+        LED.showColor(rgb)
+    if event == 'backFromLed':
+        LED.ledOff()
     #######################################################################################
     #receive stream
     #######################################################################################
