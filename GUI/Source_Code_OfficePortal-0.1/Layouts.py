@@ -40,8 +40,8 @@ Options = [
         [gui.Text('Choose one of these:', font=("Helcentica", 12), background_color=textBackground)],
         [gui.Text('Texture:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledTexture')), gui.Button('Texture settings', key='goTextureSettings', mouseover_colors=Theme.mouseOver)],
         [gui.Text('Ledstrip:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('ledStrip')), gui.Button('Led settings', key='goLedSettings', mouseover_colors=Theme.mouseOver)],
-        [gui.Text('None:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)],
-        [gui.Text('Startup program on boot:', background_color=textBackground), gui.Checkbox(key=('autoStart'), text=None)]]
+        [gui.Text('None:', background_color=textBackground), gui.Radio(text=None, group_id=('portalLed'), key=('noRing'), default=True)]]
+  
 
 advancedOptions = [
         [gui.Text('Here we have a few advanced options.', font=('Helcentica',12), background_color=textBackground)],
