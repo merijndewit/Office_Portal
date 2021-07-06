@@ -172,8 +172,7 @@ while True:
     #receive stream
     #######################################################################################
     if event == 'nextPage' and staticLayout == 5:
-        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'autoStart', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed', 'ring1080', 'ring720', 'customColor', 'slbrightness', 'customR', 'customG', 'customB', 'customTexture', 'customPath']
-        config.clearConfigfile()           
+        configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed', 'ring1080', 'ring720', 'customColor', 'slbrightness', 'customR', 'customG', 'customB', 'customTexture', 'customPath']       
         config.makeConfig(values, configspecs)
         RStream.stream()
         if RStream.checkstream() == 0:
