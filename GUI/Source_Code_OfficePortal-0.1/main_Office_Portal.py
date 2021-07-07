@@ -23,6 +23,7 @@ staticLayout = 0
 def checkGstreamer():
     window['Loading1'].update(visible=True)
     window['installGstreamer-tools'].update(visible=False)
+    window['gstreamer-toolsInstalled'].update(visible=False)
     window.refresh()
     if getdp.checkGstreamer == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
@@ -35,6 +36,7 @@ def checkGstreamer():
 def checkRpicamsrc():
     window['Loading3'].update(visible=True)
     window['installRpicamsrc'].update(visible=False)
+    window['rpicamsrcInstalled'].update(visible=False)
     window.refresh()
     if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
@@ -47,6 +49,7 @@ def checkRpicamsrc():
 def checkGstreamerdev():
     window['Loading2'].update(visible=True)
     window['installGstreamerdev'].update(visible=False)
+    window['gstreamerdevInstalled'].update(visible=False)
     window.refresh()
     if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
@@ -59,6 +62,8 @@ def checkGstreamerdev():
 def checkRaspidmx():
     window['Loading4'].update(visible=True)
     window['installRaspidmx'].update(visible=False)
+    window['RaspidmxInstalled'].update(visible=False)
+    
     window.refresh()
     if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
@@ -156,13 +161,10 @@ while True:
     #Dependencies
     #######################################################################################
     
-    if event == 'checkGstreamer':
+    if event == 'checkDependencies':
         threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
-    elif event == 'checkRpicamsrc':
         threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
-    elif event == 'checkGstreamerdev':
         threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
-    elif event == 'checkRaspidmx':
         threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
     elif event == 'installGstreamer-tools':
         threading.Thread(target=installGstreamertools, args=(), daemon=True).start()
