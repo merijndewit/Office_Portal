@@ -8,6 +8,7 @@ import Stream as RStream
 import Ring
 import LED
 import json
+import threading
 
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -18,6 +19,90 @@ else:
     cd = os.path.dirname(os.path.abspath(__file__))
 
 staticLayout = 0
+
+def checkGstreamer():
+    window['Loading1'].update(visible=True)
+    window['installGstreamer-tools'].update(visible=False)
+    window.refresh()
+    if getdp.checkGstreamer == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installGstreamer-tools'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['gstreamer-toolsInstalled'].update(visible=True)
+    window['Loading1'].update(visible=False)
+
+def checkRpicamsrc():
+    window['Loading3'].update(visible=True)
+    window['installRpicamsrc'].update(visible=False)
+    window.refresh()
+    if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installRpicamsrc'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['rpicamsrcInstalled'].update(visible=True)
+    window['Loading3'].update(visible=False)
+
+def checkGstreamerdev():
+    window['Loading2'].update(visible=True)
+    window['installGstreamerdev'].update(visible=False)
+    window.refresh()
+    if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installGstreamerdev'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['gstreamerdevInstalled'].update(visible=True)
+    window['Loading2'].update(visible=False)
+
+def checkRaspidmx():
+    window['Loading4'].update(visible=True)
+    window['installRaspidmx'].update(visible=False)
+    window.refresh()
+    if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installRaspidmx'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['RaspidmxInstalled'].update(visible=True)
+    window['Loading4'].update(visible=False)
+
+def installGstreamertools():
+    window['installGstreamer-tools'].update(visible=False)
+    window['Loading1'].update(visible=True)
+    window.refresh()
+    getD.installGstreamertools()
+    window['Loading1'].update(visible=False)
+def installRpicamsrc():
+    window['installRpicamsrc'].update(visible=False)
+    window['Loading3'].update(visible=True)
+    window.refresh()
+    getD.installRpicamsrc()
+    window['Loading3'].update(visible=False)
+def installGstreamerdev():
+    window['installGstreamerdev'].update(visible=False)
+    window['Loading2'].update(visible=True)
+    window.refresh()
+    getD.installGstreamerdev()
+    window['Loading2'].update(visible=False)
+def installRaspidmx():
+    window['installRaspidmx'].update(visible=False)
+    window['Loading4'].update(visible=True)
+    window.refresh()
+    getD.installRaspidmx()
+    window['Loading4'].update(visible=False)
+def readyStream():
+    RStream.makespdfile()
+    with open(cd + '/config.txt') as json_file:
+        config = json.load(json_file)
+        canStream = RStream.checkReceivestream() 
+        if canStream == 0 and config['ledTexture'] == True:
+            Ring.makeTexture()
+        elif canStream == 0 and config['ledStrip'] == True:
+           print('startled')
+           LED.setcolor()
+
 while True:
     #######################################################################################
     #Main
@@ -72,77 +157,21 @@ while True:
     #######################################################################################
     
     if event == 'checkGstreamer':
-        window['Loading1'].update(visible=True)
-        window['installGstreamer-tools'].update(visible=False)
-        window.refresh()
-        if getdp.checkGstreamer() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installGstreamer-tools'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['gstreamer-toolsInstalled'].update(visible=True)
-        window['Loading1'].update(visible=False)
-
-    if event == 'checkRpicamsrc':
-        window['Loading3'].update(visible=True)
-        window['installRpicamsrc'].update(visible=False)
-        window.refresh()
-        if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installRpicamsrc'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['rpicamsrcInstalled'].update(visible=True)
-        window['Loading3'].update(visible=False)
-
-    if event == 'checkGstreamerdev':
-        window['Loading2'].update(visible=True)
-        window['installGstreamerdev'].update(visible=False)
-        window.refresh()
-        if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installGstreamerdev'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['gstreamerdevInstalled'].update(visible=True)
-        window['Loading2'].update(visible=False)
-
-    if event == 'checkRaspidmx':
-        window['Loading4'].update(visible=True)
-        window['installRaspidmx'].update(visible=False)
-        window.refresh()
-        if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installRaspidmx'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['RaspidmxInstalled'].update(visible=True)
-        window['Loading4'].update(visible=False)
-
-    if event == 'installGstreamer-tools':
-        window['installGstreamer-tools'].update(visible=False)
-        window['Loading1'].update(visible=True)
-        window.refresh()
-        getD.installGstreamertools()
-        window['Loading1'].update(visible=False)
+        threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
+    elif event == 'checkRpicamsrc':
+        threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
+    elif event == 'checkGstreamerdev':
+        threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
+    elif event == 'checkRaspidmx':
+        threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
+    elif event == 'installGstreamer-tools':
+        threading.Thread(target=installGstreamertools, args=(), daemon=True).start()
     elif event == 'installRpicamsrc':
-        window['installRpicamsrc'].update(visible=False)
-        window['Loading3'].update(visible=True)
-        window.refresh()
-        getD.installRpicamsrc()
-        window['Loading3'].update(visible=False)
+        threading.Thread(target=installRpicamsrc, args=(), daemon=True).start()
     elif event == 'installGstreamerdev':
-        window['installGstreamerdev'].update(visible=False)
-        window['Loading2'].update(visible=True)
-        window.refresh()
-        getD.installGstreamerdev()
-        window['Loading2'].update(visible=False)
+        threading.Thread(target=installGstreamerdev, args=(), daemon=True).start()
     elif event == 'installRaspidmx':
-        window['installRaspidmx'].update(visible=False)
-        window['Loading4'].update(visible=True)
-        window.refresh()
-        getD.installRaspidmx()
-        window['Loading4'].update(visible=False)
+        threading.Thread(target=installRaspidmx, args=(), daemon=True).start()
     ###########
     #options
     ###########
@@ -183,15 +212,7 @@ while True:
             window['streaming'].update(visible=False)
             
     if event == 'readyStream':
-        RStream.makespdfile()
-        with open(cd + '/config.txt') as json_file:
-            config = json.load(json_file)
-            canStream = RStream.checkReceivestream() 
-            if canStream == 0 and config['ledTexture'] == True:
-                Ring.makeTexture()
-            elif canStream == 0 and config['ledStrip'] == True:
-               print('startled')
-               LED.setcolor()
+        threading.Thread(target=readyStream, args=(), daemon=True).start()
               
     if event == 'prevPage' and staticLayout == 4:
         RStream.stopreceivingstream()
