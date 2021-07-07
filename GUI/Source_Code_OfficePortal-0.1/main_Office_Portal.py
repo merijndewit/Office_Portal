@@ -68,41 +68,6 @@ def checkRaspidmx():
         window['RaspidmxInstalled'].update(visible=True)
     window['Loading4'].update(visible=False)
 
-def installGstreamertools():
-    window['installGstreamer-tools'].update(visible=False)
-    window['Loading1'].update(visible=True)
-    window.refresh()
-    getD.installGstreamertools()
-    window['Loading1'].update(visible=False)
-def installRpicamsrc():
-    window['installRpicamsrc'].update(visible=False)
-    window['Loading3'].update(visible=True)
-    window.refresh()
-    getD.installRpicamsrc()
-    window['Loading3'].update(visible=False)
-def installGstreamerdev():
-    window['installGstreamerdev'].update(visible=False)
-    window['Loading2'].update(visible=True)
-    window.refresh()
-    getD.installGstreamerdev()
-    window['Loading2'].update(visible=False)
-def installRaspidmx():
-    window['installRaspidmx'].update(visible=False)
-    window['Loading4'].update(visible=True)
-    window.refresh()
-    getD.installRaspidmx()
-    window['Loading4'].update(visible=False)
-def readyStream():
-    RStream.makespdfile()
-    with open(cd + '/config.txt') as json_file:
-        config = json.load(json_file)
-        canStream = RStream.checkReceivestream() 
-        if canStream == 0 and config['ledTexture'] == True:
-            Ring.makeTexture()
-        elif canStream == 0 and config['ledStrip'] == True:
-           print('startled')
-           LED.setcolor()
-
 while True:
     #######################################################################################
     #Main
@@ -158,20 +123,37 @@ while True:
     
     if event == 'checkGstreamer':
         threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
-    elif event == 'checkRpicamsrc':
+    if event == 'checkRpicamsrc':
         threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
-    elif event == 'checkGstreamerdev':
+    if event == 'checkGstreamerdev':
         threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
-    elif event == 'checkRaspidmx':
+    if event == 'checkRaspidmx':
         threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
-    elif event == 'installGstreamer-tools':
-        threading.Thread(target=installGstreamertools, args=(), daemon=True).start()
+
+    if event == 'installGstreamer-tools':
+        window['installGstreamer-tools'].update(visible=False)
+        window['Loading1'].update(visible=True)
+        window.refresh()
+        getD.installGstreamertools()
+        window['Loading1'].update(visible=False)
     elif event == 'installRpicamsrc':
-        threading.Thread(target=installRpicamsrc, args=(), daemon=True).start()
+        window['installRpicamsrc'].update(visible=False)
+        window['Loading3'].update(visible=True)
+        window.refresh()
+        getD.installRpicamsrc()
+        window['Loading3'].update(visible=False)
     elif event == 'installGstreamerdev':
-        threading.Thread(target=installGstreamerdev, args=(), daemon=True).start()
+        window['installGstreamerdev'].update(visible=False)
+        window['Loading2'].update(visible=True)
+        window.refresh()
+        getD.installGstreamerdev()
+        window['Loading2'].update(visible=False)
     elif event == 'installRaspidmx':
-        threading.Thread(target=installRaspidmx, args=(), daemon=True).start()
+        window['installRaspidmx'].update(visible=False)
+        window['Loading4'].update(visible=True)
+        window.refresh()
+        getD.installRaspidmx()
+        window['Loading4'].update(visible=False)
     ###########
     #options
     ###########
@@ -212,7 +194,15 @@ while True:
             window['streaming'].update(visible=False)
             
     if event == 'readyStream':
-        threading.Thread(target=readyStream, args=(), daemon=True).start()
+        RStream.makespdfile()
+        with open(cd + '/config.txt') as json_file:
+            config = json.load(json_file)
+            canStream = RStream.checkReceivestream() 
+            if canStream == 0 and config['ledTexture'] == True:
+                Ring.makeTexture()
+            elif canStream == 0 and config['ledStrip'] == True:
+               print('startled')
+               LED.setcolor()
               
     if event == 'prevPage' and staticLayout == 4:
         RStream.stopreceivingstream()
