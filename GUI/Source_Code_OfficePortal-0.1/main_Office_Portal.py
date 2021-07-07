@@ -8,6 +8,7 @@ import Stream as RStream
 import Ring
 import LED
 import json
+import threading
 
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
@@ -18,6 +19,55 @@ else:
     cd = os.path.dirname(os.path.abspath(__file__))
 
 staticLayout = 0
+
+def checkGstreamer():
+    window['Loading1'].update(visible=True)
+    window['installGstreamer-tools'].update(visible=False)
+    window.refresh()
+    if getdp.checkGstreamer == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installGstreamer-tools'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['gstreamer-toolsInstalled'].update(visible=True)
+    window['Loading1'].update(visible=False)
+
+def checkRpicamsrc():
+    window['Loading3'].update(visible=True)
+    window['installRpicamsrc'].update(visible=False)
+    window.refresh()
+    if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installRpicamsrc'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['rpicamsrcInstalled'].update(visible=True)
+    window['Loading3'].update(visible=False)
+
+def checkGstreamerdev():
+    window['Loading2'].update(visible=True)
+    window['installGstreamerdev'].update(visible=False)
+    window.refresh()
+    if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installGstreamerdev'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['gstreamerdevInstalled'].update(visible=True)
+    window['Loading2'].update(visible=False)
+
+def checkRaspidmx():
+    window['Loading4'].update(visible=True)
+    window['installRaspidmx'].update(visible=False)
+    window.refresh()
+    if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+        #gstreamer-tools not installed
+        window['installRaspidmx'].update(visible=True)
+    else:
+        #gstreamer-tools is installed
+        window['RaspidmxInstalled'].update(visible=True)
+    window['Loading4'].update(visible=False)
+
 while True:
     #######################################################################################
     #Main
@@ -72,52 +122,13 @@ while True:
     #######################################################################################
     
     if event == 'checkGstreamer':
-        window['Loading1'].update(visible=True)
-        window['installGstreamer-tools'].update(visible=False)
-        window.refresh()
-        if getdp.checkGstreamer() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installGstreamer-tools'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['gstreamer-toolsInstalled'].update(visible=True)
-        window['Loading1'].update(visible=False)
-
+        threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
     if event == 'checkRpicamsrc':
-        window['Loading3'].update(visible=True)
-        window['installRpicamsrc'].update(visible=False)
-        window.refresh()
-        if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installRpicamsrc'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['rpicamsrcInstalled'].update(visible=True)
-        window['Loading3'].update(visible=False)
-
+        threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
     if event == 'checkGstreamerdev':
-        window['Loading2'].update(visible=True)
-        window['installGstreamerdev'].update(visible=False)
-        window.refresh()
-        if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installGstreamerdev'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['gstreamerdevInstalled'].update(visible=True)
-        window['Loading2'].update(visible=False)
-
+        threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
     if event == 'checkRaspidmx':
-        window['Loading4'].update(visible=True)
-        window['installRaspidmx'].update(visible=False)
-        window.refresh()
-        if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
-            #gstreamer-tools not installed
-            window['installRaspidmx'].update(visible=True)
-        else:
-            #gstreamer-tools is installed
-            window['RaspidmxInstalled'].update(visible=True)
-        window['Loading4'].update(visible=False)
+        threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
 
     if event == 'installGstreamer-tools':
         window['installGstreamer-tools'].update(visible=False)
@@ -200,3 +211,4 @@ while True:
         LED.ledOff()
         
 window.close()
+
