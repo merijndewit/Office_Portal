@@ -52,6 +52,7 @@ def checkGstreamerdev():
 
 def checkRpicamsrc():
     window['Loading3'].update(visible=True)
+    
     window['installRpicamsrc'].update(visible=False)
     window['rpicamsrcInstalled'].update(visible=False)
     window.refresh()
@@ -142,12 +143,21 @@ def checkStream():
         window['notStreaming'].update(visible=True)
         window['streaming'].update(visible=False)
 
+def playAnimation():
+    image1.update_animation(Layouts.loadingGif, time_between_frames=1000)
+    image2.update_animation(Layouts.loadingGif, time_between_frames=1000)
+    image3.update_animation(Layouts.loadingGif, time_between_frames=1000)
+    image4.update_animation(Layouts.loadingGif, time_between_frames=1000)
 
+image1 = window['Loading1']
+image2 = window['Loading2']
+image3 = window['Loading3']
+image4 = window['Loading4']
 while True:
     #######################################################################################
     #Main
     #######################################################################################
-    event, values = window.read()
+    event, values = window.read(timeout=10)
     #staticLayout   
     if event in (None, 'Exit'):
         RStream.stopreceivingstream()
@@ -266,5 +276,7 @@ while True:
         RStream.stopstream()
         Ring.stopRing()
         LED.ledOff()
+    threading.Thread(target=playAnimation, args=(), daemon=True).start()
+    
         
 window.close()

@@ -12,6 +12,8 @@ if getattr(sys, 'frozen', False):
 else:
     cwd = os.path.dirname(os.path.abspath(__file__))
 
+loadingGif = (cwd + '/Pictures/Loading.gif')
+
 Introduction = [
         [gui.Text('A nerdy solution to make distant colleagues feel nearby', font=("Helcentica", 12), background_color=textBackground)],
         [gui.Text('Welcome to Office Portal!', background_color=textBackground)],
@@ -23,10 +25,10 @@ Dependencies = [
         [gui.Text('To use Office Portal you need to have installed a few dependencies.', background_color=textBackground)],
         [gui.Text('Click on check to check the current installed dependencies.', background_color=textBackground)],  
         [gui.Button(key='checkDependencies' ,button_text='Check')],       
-        [gui.Text('Gstreamer-Tools:', background_color=textBackground), gui.Button(visible = False ,key=('gstreamer-toolsInstalled'),  image_filename=(cwd + '/Pictures/Green_Check.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('installGstreamer-tools'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('Loading1'), image_filename=(cwd + '/Pictures/loading.png'), border_width=0, mouseover_colors=Theme.mouseOver)],
-        [gui.Text('Gstreamer-dev packages:', background_color=textBackground), gui.Button(visible = False ,key=('gstreamerdevInstalled'),  image_filename=(cwd + '/Pictures/Green_Check.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('installGstreamerdev'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('Loading2'), image_filename=(cwd + '/Pictures/loading.png'), border_width=0, mouseover_colors=Theme.mouseOver)],
-        [gui.Text('RpiCamSrc:', background_color=textBackground), gui.Button(visible = False ,key=('rpicamsrcInstalled'),  image_filename=(cwd + '/Pictures/Green_Check.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('installRpicamsrc'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('Loading3'), image_filename=(cwd + '/Pictures/loading.png'), border_width=0, mouseover_colors=Theme.mouseOver)],
-        [gui.Text('Raspidmx:', background_color=textBackground), gui.Button(visible = False ,key=('RaspidmxInstalled'),  image_filename=(cwd + '/Pictures/Green_Check.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('installRaspidmx'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Button(visible = False ,key=('Loading4'), image_filename=(cwd + '/Pictures/loading.png'), border_width=0, mouseover_colors=Theme.mouseOver)]]
+        [gui.Text('Gstreamer-Tools:', background_color=textBackground), gui.Image(visible = False, key=('gstreamer-toolsInstalled'), filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installGstreamer-tools'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading1'))],
+        [gui.Text('Gstreamer-dev packages:', background_color=textBackground), gui.Image(visible = False ,key=('gstreamerdevInstalled'),  filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installGstreamerdev'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading2'))],
+        [gui.Text('RpiCamSrc:', background_color=textBackground), gui.Image(visible = False ,key=('rpicamsrcInstalled'),  filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installRpicamsrc'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading3'))],
+        [gui.Text('Raspidmx:', background_color=textBackground), gui.Image(visible = False ,key=('RaspidmxInstalled'),  filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installRaspidmx'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading4'))]]
 
 Options = [
         [gui.Text('Here we have a few options we have to fill in correctly', font=('Helcentica',12), background_color=textBackground)],
