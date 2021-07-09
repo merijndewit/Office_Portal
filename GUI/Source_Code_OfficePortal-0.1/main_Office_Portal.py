@@ -175,7 +175,7 @@ while True:
         window['checkConfigButton'].update(visible=False)
         window['configText'].update(visible=True)
         window['configButton'].update(visible=True)
-    else:
+    elif event == 'checkConfigButton':
         window['noConfig'].update(visible=True)
 
     if event == 'configButton':
