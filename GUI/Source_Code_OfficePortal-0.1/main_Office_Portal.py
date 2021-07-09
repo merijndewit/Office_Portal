@@ -1,3 +1,4 @@
+from tkinter.constants import TRUE
 import PySimpleGUI as gui
 import sys,os
 import Layouts
@@ -9,7 +10,6 @@ import Ring
 import LED
 import json
 import threading
-import concurrent.futures
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
 
@@ -130,6 +130,19 @@ def readyStream():
            print('startled')
            LED.setcolor()
 
+def makeConfig(values, configspecs):
+    config.makeConfig(values, configspecs)
+    RStream.stream()
+
+def checkStream():
+    if RStream.checkstream() == 0:
+        window['streaming'].update(visible=True)
+        window['notStreaming'].update(visible=False)
+    else:
+        window['notStreaming'].update(visible=True)
+        window['streaming'].update(visible=False)
+
+
 while True:
     #######################################################################################
     #Main
@@ -241,15 +254,10 @@ while True:
     #######################################################################################
     if event == 'nextPage' and staticLayout == 5:
         configspecs = ['otherIP', 'targetipWidth', 'targetipHeight','targetFramerate' , 'ledStrip', 'ledTexture', 'noRing', 'streamBitrate', 'portSender', 'portReceiver', 'blueLed', 'orangeLed', 'ring1080', 'ring720', 'customColor', 'slbrightness', 'customR', 'customG', 'customB', 'customTexture', 'customPath']       
-        config.makeConfig(values, configspecs)
-        RStream.stream()
-        if RStream.checkstream() == 0:
-            window['streaming'].update(visible=True)
-            window['notStreaming'].update(visible=False)
-        else:
-            window['notStreaming'].update(visible=True)
-            window['streaming'].update(visible=False)
-            
+    
+        threading.Thread(target=makeConfig, args=(values, configspecs), daemon=True).start()
+        threading.Thread(target=checkStream, args=(), daemon=True).start()
+
     if event == 'readyStream':
         threading.Thread(target=readyStream, args=(), daemon=True).start()
               
