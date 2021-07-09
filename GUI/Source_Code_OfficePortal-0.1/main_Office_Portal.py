@@ -20,8 +20,12 @@ if getattr(sys, 'frozen', False):
     cd = os.path.dirname(sys.executable)
 else:
     cd = os.path.dirname(os.path.abspath(__file__))
+    
 
 def checkGstreamer():
+    global t
+    t = threading.Thread(target=playAnimation, args=(), daemon=True)
+    t.start()
     window['Loading1'].update(visible=True)
     window['installGstreamer-tools'].update(visible=False)
     window['gstreamer-toolsInstalled'].update(visible=False)
@@ -67,6 +71,7 @@ def checkRpicamsrc():
     threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
 
 def checkRaspidmx():
+    global t
     window['Loading4'].update(visible=True)
     window['installRaspidmx'].update(visible=False)
     window['RaspidmxInstalled'].update(visible=False)
@@ -79,6 +84,7 @@ def checkRaspidmx():
         #gstreamer-tools is installed
         window['RaspidmxInstalled'].update(visible=True)
         window['Loading4'].update(visible=False)
+    t.do_run = False
 
 def installGstreamertools():
     window['installGstreamer-tools'].update(visible=False)
@@ -145,10 +151,14 @@ def checkStream():
         window['streaming'].update(visible=False)
 
 def playAnimation():
-    image1.update_animation(Layouts.loadingGif, time_between_frames=1000)
-    image2.update_animation(Layouts.loadingGif, time_between_frames=1000)
-    image3.update_animation(Layouts.loadingGif, time_between_frames=1000)
-    image4.update_animation(Layouts.loadingGif, time_between_frames=1000)
+    t = threading.currentThread()
+    while getattr(t, "do_run", True):
+        image1.update_animation(Layouts.loadingGif, time_between_frames=1000)
+        image2.update_animation(Layouts.loadingGif, time_between_frames=1000)
+        image3.update_animation(Layouts.loadingGif, time_between_frames=1000)
+        image4.update_animation(Layouts.loadingGif, time_between_frames=1000)
+        time.sleep(1)
+        print('updated gif') 
 
 image1 = window['Loading1']
 image2 = window['Loading2']
@@ -278,7 +288,6 @@ while True:
         Ring.stopRing()
         LED.ledOff()
     
-    playAnimation()
     
     
         
