@@ -10,6 +10,7 @@ import Ring
 import LED
 import json
 import threading
+import time
 
 window = gui.Window('Office Portals', Layouts.staticLayout, size = (640,480),resizable = False , element_justification="center")
 
@@ -157,7 +158,7 @@ while True:
     #######################################################################################
     #Main
     #######################################################################################
-    event, values = window.read(timeout=10)
+    event, values = window.read(timeout=1000)
     #staticLayout   
     if event in (None, 'Exit'):
         RStream.stopreceivingstream()
@@ -276,7 +277,9 @@ while True:
         RStream.stopstream()
         Ring.stopRing()
         LED.ledOff()
-    threading.Thread(target=playAnimation, args=(), daemon=True).start()
+    
+    playAnimation()
+    
     
         
 window.close()
