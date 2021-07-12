@@ -83,10 +83,14 @@ def checkRaspidmx():
     else:
         #gstreamer-tools is installed
         window['RaspidmxInstalled'].update(visible=True)
-        window['Loading4'].update(visible=False)
+    window['Loading4'].update(visible=False)
+    window.refresh()
     t.do_run = False
 
 def installGstreamertools():
+    global t
+    t = threading.Thread(target=playAnimation, args=(), daemon=True)
+    t.start()
     window['installGstreamer-tools'].update(visible=False)
     window['Loading1'].update(visible=True)
     window.refresh()
@@ -95,9 +99,13 @@ def installGstreamertools():
     window['installRpicamsrc'].update(disabled=False)
     window['installGstreamerdev'].update(disabled=False)
     window['installRaspidmx'].update(disabled=False)
-
+    window.refresh()
+    t.do_run = False
 
 def installRpicamsrc():
+    global t
+    t = threading.Thread(target=playAnimation, args=(), daemon=True)
+    t.start()
     window['installRpicamsrc'].update(visible=False)
     window['Loading3'].update(visible=True)
     window.refresh()
@@ -106,8 +114,13 @@ def installRpicamsrc():
     window['installRpicamsrc'].update(disabled=False)
     window['installGstreamerdev'].update(disabled=False)
     window['installRaspidmx'].update(disabled=False)
+    window.refresh()
+    t.do_run = False
 
 def installGstreamerdev():
+    global t
+    t = threading.Thread(target=playAnimation, args=(), daemon=True)
+    t.start()
     window['installGstreamerdev'].update(visible=False)
     window['Loading2'].update(visible=True)
     window.refresh()
@@ -116,8 +129,13 @@ def installGstreamerdev():
     window['installRpicamsrc'].update(disabled=False)
     window['installGstreamerdev'].update(disabled=False)
     window['installRaspidmx'].update(disabled=False)
+    window.refresh()
+    t.do_run = False
 
 def installRaspidmx():
+    global t
+    t = threading.Thread(target=playAnimation, args=(), daemon=True)
+    t.start()
     window['installRaspidmx'].update(visible=False)
     window['Loading4'].update(visible=True)
     window.refresh()
@@ -126,6 +144,8 @@ def installRaspidmx():
     window['installRpicamsrc'].update(disabled=False)
     window['installGstreamerdev'].update(disabled=False)
     window['installRaspidmx'].update(disabled=False)
+    window.refresh()
+    t.do_run = False
 
 def readyStream():
     RStream.makespdfile()
@@ -158,7 +178,7 @@ def playAnimation():
         image3.update_animation(Layouts.loadingGif, time_between_frames=1000)
         image4.update_animation(Layouts.loadingGif, time_between_frames=1000)
         time.sleep(1)
-        print('updated gif') 
+
 
 image1 = window['Loading1']
 image2 = window['Loading2']
@@ -168,7 +188,7 @@ while True:
     #######################################################################################
     #Main
     #######################################################################################
-    event, values = window.read(timeout=1000)
+    event, values = window.read()
     #staticLayout   
     if event in (None, 'Exit'):
         RStream.stopreceivingstream()
