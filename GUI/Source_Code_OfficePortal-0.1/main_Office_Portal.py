@@ -33,11 +33,15 @@ def checkGstreamer():
     if getdp.checkGstreamer == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
         window['installGstreamer-tools'].update(visible=True)
+        window['Loading1'].update(visible=False)
+        window.refresh()
+        return(0)
     else:
         #gstreamer-tools is installed
         window['gstreamer-toolsInstalled'].update(visible=True)
-    window['Loading1'].update(visible=False)
-    threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
+        window['Loading1'].update(visible=False)
+        window.refresh()
+        return(1)
 
 
 def checkGstreamerdev():
@@ -48,12 +52,15 @@ def checkGstreamerdev():
     if getdp.checkGstreamerdev() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
         window['installGstreamerdev'].update(visible=True)
+        window['Loading2'].update(visible=False)
+        window.refresh()
+        return(0)
     else:
         #gstreamer-tools is installed
         window['gstreamerdevInstalled'].update(visible=True)
-    window['Loading2'].update(visible=False)
-    threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
-
+        window['Loading2'].update(visible=False)
+        window.refresh()
+        return(1)
 
 def checkRpicamsrc():
     window['Loading3'].update(visible=True)
@@ -64,11 +71,15 @@ def checkRpicamsrc():
     if getdp.checkRpicamsrc() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
         window['installRpicamsrc'].update(visible=True)
+        window['Loading3'].update(visible=False)
+        window.refresh()
+        return(0)
     else:
         #gstreamer-tools is installed
         window['rpicamsrcInstalled'].update(visible=True)
-    window['Loading3'].update(visible=False)
-    threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
+        window['Loading3'].update(visible=False)
+        window.refresh()
+        return(1)
 
 def checkRaspidmx():
     global t
@@ -80,12 +91,17 @@ def checkRaspidmx():
     if getdp.checkRaspidmx() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
         window['installRaspidmx'].update(visible=True)
+        window['Loading4'].update(visible=False)
+        window.refresh()
+        t.do_run = False
+        return(0)
     else:
         #gstreamer-tools is installed
         window['RaspidmxInstalled'].update(visible=True)
-    window['Loading4'].update(visible=False)
-    window.refresh()
-    t.do_run = False
+        window['Loading4'].update(visible=False)
+        window.refresh()
+        t.do_run = False
+        return(1)
 
 def installGstreamertools():
     global t
@@ -155,7 +171,6 @@ def readyStream():
         if canStream == 0 and config['ledTexture'] == True:
             Ring.makeTexture()
         elif canStream == 0 and config['ledStrip'] == True:
-           print('startled')
            LED.setcolor()
 
 def makeConfig(values, configspecs):
@@ -179,6 +194,19 @@ def playAnimation():
         image4.update_animation(Layouts.loadingGif, time_between_frames=1000)
         time.sleep(1)
 
+def installAll():
+    if checkGstreamer() == 0:
+        installGstreamertools()
+        threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
+    elif checkGstreamerdev() == 0:
+        installGstreamerdev()
+        threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
+    elif checkRpicamsrc() == 0:
+        installRpicamsrc()
+        threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
+    elif checkRaspidmx() == 0:
+        installRaspidmx()
+        threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
 
 image1 = window['Loading1']
 image2 = window['Loading2']
@@ -239,6 +267,10 @@ while True:
     
     if event == 'checkDependencies':
         threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
+        threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
+        threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
+        threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
+        
     if event == 'installGstreamer-tools':
         window['installGstreamer-tools'].update(disabled=True)
         window['installRpicamsrc'].update(disabled=True)
@@ -264,6 +296,8 @@ while True:
         window['installGstreamerdev'].update(disabled=True)
         window['installRaspidmx'].update(disabled=True)
         threading.Thread(target=installRaspidmx, args=(), daemon=True).start()
+    elif event == 'installAll':
+        threading.Thread(target=installAll, args=(), daemon=True).start()
 
     ###########
     #options

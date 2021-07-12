@@ -24,7 +24,7 @@ Introduction = [
 Dependencies = [
         [gui.Text('To use Office Portal you need to have installed a few dependencies.', background_color=textBackground)],
         [gui.Text('Click on check to check the current installed dependencies.', background_color=textBackground)],
-        [gui.Button(key='checkDependencies' ,button_text='Check')],       
+        [gui.Button(key='checkDependencies', button_text='Check'), gui.Button(key='installAll', button_text='Install all')],       
         [gui.Text('Gstreamer-Tools:', background_color=textBackground), gui.Image(visible = False, key=('gstreamer-toolsInstalled'), filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installGstreamer-tools'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading1'))],
         [gui.Text('Gstreamer-dev packages:', background_color=textBackground), gui.Image(visible = False ,key=('gstreamerdevInstalled'),  filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installGstreamerdev'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading2'))],
         [gui.Text('RpiCamSrc:', background_color=textBackground), gui.Image(visible = False ,key=('rpicamsrcInstalled'),  filename=(cwd + '/Pictures/Green_Check.png')), gui.Button(visible = False ,key=('installRpicamsrc'), image_filename=(cwd + '/Pictures/arrow_down.png'), border_width=0, mouseover_colors=Theme.mouseOver), gui.Image(visible = False ,key=('Loading3'))],
