@@ -195,18 +195,26 @@ def playAnimation():
         time.sleep(1)
 
 def installAll():
+    window['installGstreamer-tools'].update(disabled=True)
+    window['installRpicamsrc'].update(disabled=True)
+    window['installGstreamerdev'].update(disabled=True)
+    window['installRaspidmx'].update(disabled=True)
     if checkGstreamer() == 0:
         installGstreamertools()
         threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
-    elif checkGstreamerdev() == 0:
-        installGstreamerdev()
-        threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
-    elif checkRpicamsrc() == 0:
-        installRpicamsrc()
-        threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
-    elif checkRaspidmx() == 0:
-        installRaspidmx()
-        threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
+        if checkGstreamerdev() == 0:
+            installGstreamerdev()
+            threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
+            if checkRpicamsrc() == 0:
+                installRpicamsrc()
+                threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
+                if checkRaspidmx() == 0:
+                    installRaspidmx()
+                    threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
+    window['installGstreamer-tools'].update(disabled=False)
+    window['installRpicamsrc'].update(disabled=False)
+    window['installGstreamerdev'].update(disabled=False)
+    window['installRaspidmx'].update(disabled=False)
 
 image1 = window['Loading1']
 image2 = window['Loading2']
