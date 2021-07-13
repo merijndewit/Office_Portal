@@ -30,7 +30,7 @@ def checkGstreamer():
     window['installGstreamer-tools'].update(visible=False)
     window['gstreamer-toolsInstalled'].update(visible=False)
     window.refresh()
-    if getdp.checkGstreamer == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
+    if getdp.checkGstreamer() == 0: #the function returns a 1 or a 0. 0 for when gstreamer-tools is not installed and 1 for when it is.
         #gstreamer-tools not installed
         window['installGstreamer-tools'].update(visible=True)
         window['Loading1'].update(visible=False)
@@ -64,7 +64,6 @@ def checkGstreamerdev():
 
 def checkRpicamsrc():
     window['Loading3'].update(visible=True)
-    
     window['installRpicamsrc'].update(visible=False)
     window['rpicamsrcInstalled'].update(visible=False)
     window.refresh()
@@ -202,15 +201,15 @@ def installAll():
     if checkGstreamer() == 0:
         installGstreamertools()
         threading.Thread(target=checkGstreamer, args=(), daemon=True).start()
-        if checkGstreamerdev() == 0:
-            installGstreamerdev()
-            threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
-            if checkRpicamsrc() == 0:
-                installRpicamsrc()
-                threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
-                if checkRaspidmx() == 0:
-                    installRaspidmx()
-                    threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
+    if checkGstreamerdev() == 0:
+        installGstreamerdev()
+        threading.Thread(target=checkGstreamerdev, args=(), daemon=True).start()
+    if checkRpicamsrc() == 0:
+        installRpicamsrc()
+        threading.Thread(target=checkRpicamsrc, args=(), daemon=True).start()
+    if checkRaspidmx() == 0:
+        installRaspidmx()
+        threading.Thread(target=checkRaspidmx, args=(), daemon=True).start()
     window['installGstreamer-tools'].update(disabled=False)
     window['installRpicamsrc'].update(disabled=False)
     window['installGstreamerdev'].update(disabled=False)
