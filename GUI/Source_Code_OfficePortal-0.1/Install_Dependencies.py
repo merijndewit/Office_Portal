@@ -10,7 +10,6 @@ def installRpicamsrc():
     global _install
     try:
         _install = subprocess.check_call(["git clone https://github.com/thaytan/gst-rpicamsrc.git && cd gst-rpicamsrc && ./autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/ && make && sudo make install"], shell=True)
-        _install.wait()
     except subprocess.CalledProcessError:
         _install = subprocess.Popen(["cd gst-rpicamsrc && ./autogen.sh --prefix=/usr --libdir=/usr/lib/arm-linux-gnueabihf/ && make && sudo make install"], shell=True)
         _install.wait()
