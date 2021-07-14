@@ -2,9 +2,14 @@
 
 In this time of covid, we work a lot remotely from each other, for example in another space. One can feel lonely here. So we came up with the idea to create an office portal and make it accessible to everyone using Github. With the Office Portal, you can look into another room. With this project, we hope to reduce loneliness in the office by bringing your colleagues a little closer with the help of IT. The GitHub page contains all instructions on how to make an Office Portal yourself, as well as all the necessary code.
 
+
+# The project
+For the project, we want to make two portals that stream video to each other. Streaming with decent quality and delay can be really hard on the raspberry pi. Luckily we've made a python program that makes it a lot easier! It’s recommended that you start with installing the Office Portal program on both PIs. And Then making the portals themselves. All the instructions to make a functioning portal from software to hardware are written down below!
+Hang them both in seperate office rooms and will end up with an awesome portal to make your office less lonely!
+
 # Installing
 
-We have multiple ways for installing Office Portal on your raspberry pi. The recommended way is to use the GUI. It is really simple to install and only requires a few steps. But if you want to use/install Office Portal in a different way then you can! We made a different file (because it is so long) for other ways of using/installing Office Portal [here](https://github.com/merijndewit/Office_Portal/blob/main/Other.md). If you are happy using the GUI then continue to **Installing GUI**.
+We have multiple ways for installing Office Portal on your raspberry pi. The recommended way is to use the GUI. It is really simple to install and only requires a few steps. But if you want to use/install Office Portal in a different way then you can! We made a different file (because it is so long) for other ways of using/installing Office Portal [Here](https://github.com/merijndewit/Office_Portal/blob/main/Other.md). If you are happy using the GUI then continue to **Installing GUI**.
 
 # Installing Office Portal (GUI)
 
@@ -14,7 +19,7 @@ First, get the latest release of [Raspberry Pi OS with desktop and recommended s
 
 After you installed raspberry pi os and booted into the os connect to a wifi network and check for updates with:
 
-	sudo apt-get update && sudo apt-get upgrade
+	sudo apt-get update -y && sudo apt-get upgrade -y
 
 Then we have to enable the SPI interface and the camera to do this type:
 
@@ -44,27 +49,24 @@ Once the GUI application of Office Portal has started we can see an instruction 
 
 ## Dependencies
 
-Once we go to the next page from the introduction page we can see all the dependencies that need to be installed. Click on the **check** button. if you see a **green check** next to the button you've just clicked then the dependency is installed. if you see a **download button** next to the button you've just clicked then the dependency is not yet installed and it needs to be installed. To install it is really easy you just have to click on the **download button** and the program will install it for you. It can take a bit until it’s installed (approx 5 min) when the **download button** disappears the dependency has been installed. You can press check gain if you want to make sure the dependency has been installed correctly.
+Once we go to the next page from the introduction page we can see all the dependencies that need to be installed. Click on the **check** button. If you see a **green checkmark** next to the button you've just clicked then the dependency is installed. If you see a **download button** next to the button you've just clicked then the dependency is not yet installed and it needs to be installed. To install it is really easy you just have to click on the **Install all** button and the program will install all missing dependencies for you. It can take a bit until it’s installed (approx 10 min) when the **download button** disappears and a **green checkmark** appears the dependency has been installed. If you want to install them individually you can click on the **download button** next to the dependency you want to install.
+
+>Note: Gstreamer-Tools has to be installed before installing RpiCamSrc
 
 ## Options
 
 On the options page, we can change the stream specifications. You can change the resolution of the stream and framerate that you are sending to the other pi.
 
-We also have an option for the portal ring. We can use the portal ring to make our portal look more like a portal. We can use an LED strip or a digital mask. If you don’t want either of those you can click on **None** and continue to the next page. If you want to make use of an on-screen mask or LED strip then you can select **blue** or **orange** depending which color you want the mask/led strip to be of the portal. If you want to make use of an on-screen mask, for example:
+We also have an option for the portal ring. We can use the portal ring to make our portal look more like a portal. We can use an LED strip or a digital mask. If you don’t want either of those you can click on **None** and continue to the next page. If you want to make use of an on-screen mask or LED strip then you can select **blue** or **orange** depending which color you want the mask/led strip to be of the portal. If you want to make use of an on-screen mask, as example:
 
-![](https://lh4.googleusercontent.com/fTpMh55sUaVGSj0Lq7JHZtf2fOemiq-XaMOdPv3cz7747RRMTX-LyzBzjqQ03MI9pQcUK-kqBYx5FkxrgffkFeEEbTPRar3UJcl6CH5iBSYow7PKM5WnF8w3Y-Ad5RkRlLdedhgj)  
-  
-  
-**
+![](https://lh5.googleusercontent.com/aDjmAqPXKQWfXTs1x3--9PxuKba_kpa2ZXF1RyDJn1lzH7LG4-h4_pRb-VOL4NZBwHmkPdImPbh68CvjNXaE3QwIz6xxellcUQa9MX_HYF-RuMBb7O48bM4-O1AuzItOXeGkX2Ab)  
   
 
 Then you can select **Texture**. When you click on the button **Texture Settings** a menu opens with more options. The first option is the resolution (default is 1080p). If you have a 720p resolution screen then select **720p**. If you have a monitor with a different resolution than 1080/720p or you want to use a custom on-screen digital mask then click the checkbox and click on **Browse** and select your custom mask.
 
 >Note: Only .PNG is supported another file type will not work.
 
-  
-
-If you want to use an LED strip then select **Ledstrip**. When you click on the button **Ledstrip Settings** a menu opens with extra settings. Here you can adjust the brightness of the leds. If you want to use a custom color for the LED strip select the checkbox and in the boxes below enter the Decimal RGB code. The first box is the red value, the second green, and the third is blue. The values go from 0-255.
+If you want to use an LED strip then select **Ledstrip**. When you click on the button **Ledstrip Settings** a menu opens with extra settings. Here you can adjust the brightness of the leds. If you want to use a custom color for the LED strip select the checkbox and in the boxes below enter the Decimal RGB code. The first box is the red value, the second green, and the third is blue. The values go from 0-255. When you press on the button **show color** the led strip will show the color of the custom RGB value.
 
 When you entered the options you want you can continue to the next page.
 
@@ -75,7 +77,7 @@ When you entered the options you want you can continue to the next page.
 Here you can change the bitrate and port of the stream you are sending.
 You do not have to change the settings, only when you encounter a problem.
 
->Note: the port has to be the same on both PIs otherwise you may encounter problems
+>Note: the port has to be the same on both PIs
 
 ## Connect to other PI
 
@@ -103,11 +105,7 @@ If you want/need to buy all the materials its is going to cost you around this:
 |Cables and adapters| 20€
 |Total:|164€
 
-  
-
 >Note: Don’t forget that you need to multiple the price by 2 because you need 2 portals
-
-  
 
 |extensive |Estimated price: |
 |----------------|-----------------|
@@ -136,6 +134,8 @@ Down here are the results from the test I did. with the pi 3B+ and pi 4B:
 |1080p / 20fps|✔ |✔
 |730p / 45fps |**X**  |✔
 |730p / 30fps | ✔ |✔
+
+>Note: The delay of the stream in our test was less than 400ms 
 
 The Pi 3B+ is not compatible with all resolutions because it has a hard time keeping up with the stream. This can result in a delay. The raspberry pi 4 is obviously the best choice for video quality. But if you don’t mind a lower framerate or resolution then the pi 3B+ is the cheaper option. Just pick whichever you prefer!
 
@@ -220,3 +220,4 @@ Circuit diagram separate power supply powering LEDs and raspberry pi:
 >Note: The Office Portal program uses the GPIO 18 [pwm] on the raspberry pi.
 
 We hope you enjoy Office Portal!
+
